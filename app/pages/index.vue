@@ -18,6 +18,10 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import Vue from 'vue'
+import ElementUI from 'element-ui'
+
+Vue.use(ElementUI)
 
 export default {
   components: {

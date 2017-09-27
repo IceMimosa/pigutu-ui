@@ -19,6 +19,13 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
+  ** Global css
+  */
+  css: [
+    '~assets/css/main.css',
+    'element-ui/lib/theme-default/index.css'
+  ],
+  /*
   ** Build configuration
   */
   build: {
@@ -36,4 +43,14 @@ module.exports = {
       }
     }
   }
+  // vendor: [],
+  // extractCSS: true,
+  // babel: {
+  //   plugins: [
+  //     ['component', {
+  //       libraryName: 'element-ui',
+  //       styleLibraryName: 'theme-default'
+  //     }]
+  //   ]
+  // }
 }

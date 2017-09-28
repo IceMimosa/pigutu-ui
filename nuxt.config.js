@@ -11,7 +11,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'http://at.alicdn.com/t/font_429841_kq3juc9bl3c2qpvi.css' }
     ]
   },
   /*
@@ -25,6 +26,22 @@ module.exports = {
     '~assets/css/main.css',
     'element-ui/lib/theme-default/index.css'
   ],
+  /**
+   * Module
+   */
+  module: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  // axios
+  axios: {},
+  // proxy
+  proxy: {
+    '/api/**': {
+      target: 'http://127.0.0.1:8080'
+    }
+  },
+
   /*
   ** Build configuration
   */

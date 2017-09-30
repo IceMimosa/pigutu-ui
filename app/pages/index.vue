@@ -16,7 +16,6 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import Logo from '~/components/Logo.vue'
-
 Vue.use(ElementUI)
 
 export default {

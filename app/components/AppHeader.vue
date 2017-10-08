@@ -1,16 +1,97 @@
 <template>
   <header>
-    <div class="header">
-
+    <div class="header clearfix">
+      <div class="logo">
+        <i class="iconfont icon-pigutu-logo"></i>
+      </div>
+      <div class="tabs">
+        <ul class="tabs-float clearfix">
+          <li v-bind:class="{active: active === 'index'}"><nuxt-link to="/">首页</nuxt-link></li>
+          <li v-bind:class="{active: active === 'about'}"><nuxt-link to="/">关于</nuxt-link></li>
+          <li v-bind:class="{active: active === 'feedback'}"><nuxt-link to="/">反馈</nuxt-link></li>
+        </ul>
+      </div>
+      <div class="search">
+        <el-input
+          placeholder="请输入内容"
+          icon="search"
+          size="small"
+          v-model="keyword"
+          :on-icon-click="handleIconClick">
+        </el-input>
+      </div>
     </div>
   </header>
 </template>
 
+<script>
+export default {
+  props: ['active'],
+  data () {
+    return {
+      keyword: ''
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
+$MAIN_COLOR: #6CF;
 .header {
   height: 50px;
   border-bottom: 1px solid #E8E8E8;
   background: white;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .logo {
+    float: left;
+    margin: 14px 0 0 60px;
+    i {
+      font-size: 30px;
+      color: $MAIN_COLOR;
+    }
+  }
+
+  .tabs {
+    float: left;
+    .tabs-float {
+      list-style: none outside none;
+      li {
+        float: left;
+        height: 50px;
+        width: 75px;
+        text-align: center;
+        margin: 0 9px;
+        a {
+          display: block;
+          color: $MAIN_COLOR;
+          height: 100%;
+          width: 100%;
+          padding-top: 16px;
+          font-size: 16px;
+          border-bottom: 4px solid transparent;
+          transition: all .35s ease;
+          text-decoration: none;
+        }
+        a:hover {
+          border-bottom: 4px solid $MAIN_COLOR;
+        }
+      }
+      .active {
+        a {
+          border-bottom: 4px solid $MAIN_COLOR;
+        }
+      }
+    }
+  }
+  .search {
+    float: left;
+    margin: 12px 0 0 100px;
+  }
 }
 </style>

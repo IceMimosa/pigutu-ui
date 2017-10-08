@@ -1,5 +1,5 @@
 html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,Helvetica Neue,Helvetica,sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -12,4 +12,9 @@ html {
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+clearfix:after {
+  content: "";
+  clear: both;
 }

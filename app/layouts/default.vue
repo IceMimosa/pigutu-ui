@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-header />
+    <app-header active='index'/>
     <nuxt/>
   </div>
 </template>

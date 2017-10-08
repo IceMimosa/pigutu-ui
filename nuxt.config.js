@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   srcDir: 'app/',
   /*
@@ -45,7 +47,9 @@ module.exports = {
   /*
   ** Build configuration
   */
+  dev: (process.env.NODE_ENV !== 'production'),
   build: {
+    extractCSS: true,
     /*
     ** Run ESLINT on save
     */
@@ -58,6 +62,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      config.resolve.alias['compass'] = path.resolve(__dirname, 'compass-mixins/lib/compass')
     }
   }
   // vendor: [],

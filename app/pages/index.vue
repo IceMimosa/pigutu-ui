@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
       <h1 class="title">
         pigutu-ui
       </h1>
@@ -15,23 +14,23 @@
 <script>
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import Logo from '~/components/Logo.vue'
 Vue.use(ElementUI)
 
 export default {
   components: {
-    Logo
+
   }
 }
 </script>
 
-<style>
+<style lang='scss'>
 .container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background: black;
 }
 
 .title {

@@ -26,19 +26,25 @@
 
 <script>
 export default {
-  props: ['active'],
+  props: {
+    active: String
+  },
   data () {
     return {
       keyword: ''
+    }
+  },
+  methods: {
+    handleIconClick: function () {
+      alert('搜索')
     }
   }
 }
 </script>
 
-
 <style lang="scss" scoped>
 $MAIN_COLOR: #6CF;
-.header {
+header {
   height: 50px;
   border-bottom: 1px solid #E8E8E8;
   background: white;
@@ -47,10 +53,14 @@ $MAIN_COLOR: #6CF;
   top: 0;
   left: 0;
   right: 0;
-
+}
+.header {
+  width: 1140px;
+  margin: 0 auto;
   .logo {
+    width:138px;
     float: left;
-    margin: 14px 0 0 60px;
+    padding: 14px 0 0 24px;
     i {
       font-size: 30px;
       color: $MAIN_COLOR;
@@ -91,7 +101,7 @@ $MAIN_COLOR: #6CF;
   }
   .search {
     float: left;
-    margin: 12px 0 0 100px;
+    margin: 12px 0 0 380px;
   }
 }
 </style>

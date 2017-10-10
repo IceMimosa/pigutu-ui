@@ -6,7 +6,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import ElementUI from 'element-ui'
 import AppHeader from '~/components/AppHeader.vue'
+Vue.use(ElementUI)
 
 export default {
   components: {

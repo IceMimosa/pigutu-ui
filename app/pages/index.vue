@@ -1,56 +1,90 @@
 <template>
-  <section class="container">
-    <div>
-      <h1 class="title">
-        pigutu-ui
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
+  <div class="container">
+    <div class="content-top clearfix">
+      <el-carousel class="content-top-carousel" height="248px">
+        <el-carousel-item v-for="item in 4" :key="item">
+          <img
+            width=400
+            height=248
+            src='http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg'
+          />
+        </el-carousel-item>
+      </el-carousel>
+      <app-image
+        :width="160"
+        :height="115"
+        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
+      />
+      <app-image
+        :width="160"
+        :height="115"
+        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
+      />
+      <app-image
+        :width="160"
+        :height="115"
+        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
+      />
+      <app-image
+        :width="160"
+        :height="115"
+        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
+      />
+      <app-image
+        :width="160"
+        :height="115"
+        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
+      />
+      <app-image
+        :width="160"
+        :height="115"
+        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
+      />
     </div>
-  </section>
+    <div style="background-color: grey; height: 200px; width: 200px; display:block;">
+    </div>
+  </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import ElementUI from 'element-ui'
-Vue.use(ElementUI)
+import AppImage from '~/components/common/AppImage.vue'
 
 export default {
   components: {
-
+    AppImage
   }
 }
 </script>
 
 <style lang='scss'>
 .container {
-  min-height: 100vh;
-  display: flex;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: #f7fbfc;
+  background: #F7FBFC;
+  padding-top: 80px;
+  padding-left: 130px;
 }
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.content-top {
+  width: 980px;
+  height: 300px;
+  .content-top-carousel {
+    float: left;
+    width: 400px;
+    border-radius: 4px;
+    background-color: #99a9bf;
+    h3 {
+      line-height: 210px;
+    }
+    .el-carousel__arrow {
+      background-color: rgba(31, 45, 61, .6);
+    }
+  }
+  .app-image {
+    float: left;
+    margin-left: 24px;
+    margin-bottom: 12px;
+  }
 }
 </style>

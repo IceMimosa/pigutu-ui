@@ -20,7 +20,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#6CF' },
   /*
   ** Global css
   */
@@ -62,7 +62,6 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-      config.resolve.alias['compass'] = path.resolve(__dirname, 'compass-mixins/lib/compass')
     }
   }
   // vendor: [],

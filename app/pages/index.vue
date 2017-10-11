@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import AppImage from '~/components/common/AppImage.vue'
+import AppImage from '~/components/common/AppImage.vue';
 
 export default {
   components: {

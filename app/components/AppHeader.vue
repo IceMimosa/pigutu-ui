@@ -101,7 +101,7 @@ header {
   }
   .search {
     float: left;
-    margin: 12px 0 0 380px;
+    margin: 12px 0 0 420px;
   }
 }
 </style>

@@ -41,13 +41,13 @@
         :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
       />
     </div>
-    <div style="background-color: grey; height: 200px; width: 200px; display:block;">
+    <div style="margin: 0 auto; background-color: grey; height: 200px; width: 980px; display:block;">
     </div>
   </div>
 </template>
 
 <script>
-import AppImage from '~/components/common/AppImage.vue';
+import AppImage from '~/components/common/AppImage.vue'
 
 export default {
   components: {
@@ -64,16 +64,17 @@ export default {
   text-align: center;
   background: #F7FBFC;
   padding-top: 80px;
-  padding-left: 130px;
 }
 .content-top {
   width: 980px;
   height: 300px;
+  margin: 0 auto;
   .content-top-carousel {
     float: left;
     width: 400px;
     border-radius: 4px;
     background-color: #99a9bf;
+    margin-right: 20px;
     h3 {
       line-height: 210px;
     }
@@ -83,7 +84,7 @@ export default {
   }
   .app-image {
     float: left;
-    margin-left: 24px;
+    margin-left: 26px;
     margin-bottom: 12px;
   }
 }

@@ -11,37 +11,39 @@
         </el-carousel-item>
       </el-carousel>
       <app-image
-        :width="160"
-        :height="115"
-        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
-      />
-      <app-image
-        :width="160"
-        :height="115"
-        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
-      />
-      <app-image
-        :width="160"
-        :height="115"
-        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
-      />
-      <app-image
-        :width="160"
-        :height="115"
-        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
-      />
-      <app-image
-        :width="160"
-        :height="115"
-        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
-      />
-      <app-image
+        v-for="item in 6"
+        :key="item"
         :width="160"
         :height="115"
         :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
       />
     </div>
-    <div style="margin: 0 auto; background-color: grey; height: 200px; width: 980px; display:block;">
+    <div class="content-0 clearfix">
+      <div class="mingxing">
+        <div class="intro-title">
+          <div class="header-line clearfix">
+            <a class="name" href="javascript:;">明星</a>
+            <el-button class="more" size="mini">
+              更多<i class="el-icon-arrow-right el-icon--right"></i>
+            </el-button>
+            <el-button class="refresh" size="mini" type="info">
+              <i class="iconfont icon-shuaxin"></i>换一批
+            </el-button>
+          </div>
+        </div>
+        <div class="intro-img clearfix">
+          <app-image
+            v-for="item in 8"
+            :key="item"
+            :width="160"
+            :height="115"
+            :src="`http://s.moemoe.la/image/2017-10-17/835fabc6-9c7f-4714-ba97-c7224e1d9b90.png`"
+          />
+        </div>
+      </div>
+      <div class="view-rank">
+
+      </div>
     </div>
   </div>
 </template>
@@ -86,6 +88,54 @@ export default {
     float: left;
     margin-left: 26px;
     margin-bottom: 12px;
+  }
+}
+.content-0 {
+  width: 980px;
+  height: 300px;
+  margin: 0 auto;
+  .mingxing {
+    float: left;
+    width: 720px;
+    .intro-title {
+      height: 24px;
+    }
+    .header-line {
+      .name {
+        font-size: 24px;
+        line-height: 24px;
+        float: left;
+        color: #222;
+        text-decoration: none;
+        margin-left: 8px;
+      }
+      i {
+        font-size: 12px;
+      }
+      .more {
+        float: right;
+        margin-right: 20px;
+      }
+      .refresh {
+        float: right;
+        margin-right: 12px;
+      }
+    }
+    .intro-img {
+      height: 300px;
+      margin-top: 12px;
+      .app-image {
+        float: left;
+        margin-bottom: 12px;
+        margin-right: 20px;
+      }
+    }
+  }
+  .view-rank {
+    float: left;
+    background-color: black;
+    width: 260px;
+    height: 320px;
   }
 }
 </style>

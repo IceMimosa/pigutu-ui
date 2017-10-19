@@ -42,7 +42,38 @@
         </div>
       </div>
       <div class="view-rank">
-
+        <div class="header-line clearfix">
+          <a class="name" href="javascript:;">浏览排行</a>
+          <a class="more" href="javascript:;">更多</a>
+        </div>
+        <div class="rank-ul">
+          <ul>
+            <li class="has-image" v-for="item in 3" :key="item">
+              <i>{{ item }}</i>
+              <a class="detail">
+                <div class="image">
+                  <app-image
+                    :width="80"
+                    :height="50"
+                    :src="`http://s.moemoe.la/image/2017-10-17/835fabc6-9c7f-4714-ba97-c7224e1d9b90.png`"
+                  />
+                </div>
+                <div class="text">
+                  <p class="title">这首曲子成就了多少经典，至今无法被超越</p>
+                  <p class="point">综合评分：21.0万</p>
+                </div>
+              </a>
+            </li>
+            <li class="no-image" v-for="item in 2" :key="item">
+              <i>{{ item }}</i>
+              <a class="detail little">
+                <div class="text">
+                  <p class="title">这首曲子成就了多少经典，至今无法被超越</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -59,6 +90,7 @@ export default {
 </script>
 
 <style lang='scss'>
+$MAIN_COLOR: #6CF;
 .container {
   margin: 0 auto;
   justify-content: center;
@@ -133,9 +165,89 @@ export default {
   }
   .view-rank {
     float: left;
-    background-color: black;
     width: 260px;
     height: 320px;
+    .header-line {
+      height: 24px;
+      a {
+        text-decoration: none;
+      }
+      .name {
+        font-size: 20px;
+        line-height: 20px;
+        float: left;
+        color: #222;
+        margin-left: 8px;
+      }
+      .more {
+        font-size: 16px;
+        line-height: 20px;
+        float: right;
+        color: $MAIN_COLOR;
+      }
+    }
+    .rank-ul {
+      margin-top: 10px;
+      ul {
+        list-style: none;
+        padding-left: 10px;
+        li {
+          height: 60px;
+          a {
+            cursor: pointer;
+          }
+        }
+      }
+      i {
+        display: block;
+        width: 18px;
+        height: 18px;
+        background: #f25d8e;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 4px;
+        font-weight: bolder;
+        font-style: normal;
+        float: left;
+      }
+      .detail {
+        float: left;
+        margin-left: 10px;
+        .image {
+          float: left;
+        }
+        .text {
+          float: left;
+          width: 130px;
+          text-align: left;
+          margin-left: 10px;
+          font-family: PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,Helvetica Neue,Helvetica,sans-serif;          transition: color .3s ease;
+          .title {
+            height: 36px;
+            line-height: 18px;
+            font-size: 12px;
+            color: #222;
+          }
+          .point {
+            font-size: 12px;
+            line-height: 12px;
+            color: #99a2aa;
+            height: 12px;
+            margin-top: 5px;
+          }
+        }
+      }
+      .no-image {
+        height: 35px;
+      }
+      .little {
+        margin-left: 0;
+        .text {
+          width: 210px;
+        }
+      }
+    }
   }
 }
 </style>

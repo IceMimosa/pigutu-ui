@@ -2,6 +2,10 @@ const path = require('path')
 
 module.exports = {
   srcDir: 'app/',
+  env: {
+    SERVER: process.env.SERVER || 'localhost',
+    PORT: process.env.PORT || 8080
+  },
   /*
   ** Headers of the page
   */
@@ -29,27 +33,22 @@ module.exports = {
     'element-ui/lib/theme-default/index.css'
   ],
   /**
+   * plugins
+   */
+  plugins: [
+    { src: '~plugins/axios' }
+  ],
+  /**
    * Module
    */
-  module: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy'
-  ],
-  // axios
-  axios: {},
-  // proxy
-  proxy: {
-    '/api/**': {
-      target: 'http://127.0.0.1:8080'
-    }
-  },
-
+  module: [ ],
   /*
   ** Build configuration
   */
   dev: (process.env.NODE_ENV !== 'production'),
   build: {
     extractCSS: true,
+    vendor: ['axios'],
     /*
     ** Run ESLINT on save
     */
@@ -64,8 +63,6 @@ module.exports = {
       }
     }
   }
-  // vendor: [],
-  // extractCSS: true,
   // babel: {
   //   plugins: [
   //     ['component', {

@@ -2,11 +2,11 @@
   <div class="container">
     <div class="content-top clearfix">
       <el-carousel class="content-top-carousel" height="248px">
-        <el-carousel-item v-for="item in 4" :key="item">
+        <el-carousel-item v-for="url in urls" :key="url">
           <img
             width=400
             height=248
-            src='http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg'
+            :src="url"
           />
         </el-carousel-item>
       </el-carousel>
@@ -18,7 +18,7 @@
         :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
       />
     </div>
-    <div class="content-0 clearfix">
+    <div class="content-0 clearfix" v-for="item in 4" :key="item">
       <div class="mingxing">
         <div class="intro-title">
           <div class="header-line clearfix">
@@ -80,11 +80,18 @@
 </template>
 
 <script>
+import axios from 'axios'
 import AppImage from '~/components/common/AppImage.vue'
 
 export default {
   components: {
     AppImage
+  },
+  asyncData ({ app, req, params }) {
+    return axios.get('/api/pigutu/test')
+      .then((res) => {
+        return { urls: res.data }
+      })
   }
 }
 </script>
@@ -124,7 +131,7 @@ $MAIN_COLOR: #6CF;
 }
 .content-0 {
   width: 980px;
-  height: 300px;
+  height: 340px;
   margin: 0 auto;
   .mingxing {
     float: left;

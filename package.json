@@ -13,8 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^4.3.0",
-    "@nuxtjs/proxy": "^1.1.2",
+    "axios": "^0.16.2",
     "compass-mixins": "^0.12.10",
     "element-ui": "^1.4.5",
     "nuxt": "^1.0.0-rc11",

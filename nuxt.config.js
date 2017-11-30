@@ -1,11 +1,11 @@
 const path = require('path')
 
+// 后端proxy参数
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
+const PROXY_API_URL = process.PROXY_API_URL || 'http://localhost:8080'
+
 module.exports = {
   srcDir: 'app/',
-  env: {
-    SERVER: process.env.SERVER || 'localhost',
-    PORT: process.env.PORT || 8080
-  },
   /*
   ** Headers of the page
   */
@@ -39,16 +39,26 @@ module.exports = {
     { src: '~plugins/axios' }
   ],
   /**
-   * Module
+   * Modules
    */
-  module: [ ],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  proxy: [
+    ['/api', {
+      target: PROXY_API_URL
+    }]
+  ],
+  axios: {
+    baseURL: BASE_URL
+  },
   /*
   ** Build configuration
   */
   dev: (process.env.NODE_ENV !== 'production'),
   build: {
     extractCSS: true,
-    vendor: ['axios'],
     /*
     ** Run ESLINT on save
     */

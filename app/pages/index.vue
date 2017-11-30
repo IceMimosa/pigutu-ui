@@ -80,18 +80,20 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapState } from 'vuex'
 import AppImage from '~/components/common/AppImage.vue'
 
 export default {
   components: {
     AppImage
   },
-  asyncData ({ app, req, params }) {
-    return axios.get('/api/pigutu/test')
-      .then((res) => {
-        return { urls: res.data }
-      })
+  fetch ({ store }) {
+    return store.dispatch('getData')
+  },
+  computed: {
+    ...mapState({
+      urls: 'urls'
+    })
   }
 }
 </script>

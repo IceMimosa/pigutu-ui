@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <app-header active='index'/>
     <nuxt/>
   </div>
@@ -19,5 +19,8 @@ export default {
 </script>
 
 <style lang='scss'>
-
+.main {
+  height: 100%;
+  display: flex;
+}
 </style>

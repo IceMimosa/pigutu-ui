@@ -21,6 +21,5 @@ export default {
 <style lang='scss'>
 .main {
   height: 100%;
-  display: flex;
 }
 </style>

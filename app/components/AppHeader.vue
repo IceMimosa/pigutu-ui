@@ -7,8 +7,8 @@
       <div class="tabs">
         <ul class="tabs-float clearfix">
           <li v-bind:class="{active: active === 'index'}"><nuxt-link to="/">首页</nuxt-link></li>
-          <li v-bind:class="{active: active === 'about'}"><nuxt-link to="/">关于</nuxt-link></li>
-          <li v-bind:class="{active: active === 'feedback'}"><nuxt-link to="/">反馈</nuxt-link></li>
+          <li v-bind:class="{active: active === 'about'}"><nuxt-link to="/about">关于</nuxt-link></li>
+          <li v-bind:class="{active: active === 'feedback'}"><nuxt-link to="/feedback">反馈</nuxt-link></li>
         </ul>
       </div>
       <div class="search">
@@ -47,6 +47,7 @@ $MAIN_COLOR: #6CF;
 header {
   height: 50px;
   border-bottom: 1px solid #E8E8E8;
+  box-shadow: 0 2px 6px 0 rgba(36, 33, 46, .08);
   background: white;
   position: fixed;
   z-index: 9999;
@@ -92,10 +93,8 @@ header {
           border-bottom: 4px solid $MAIN_COLOR;
         }
       }
-      .active {
-        a {
-          border-bottom: 4px solid $MAIN_COLOR;
-        }
+      a.nuxt-link-exact-active {
+        border-bottom: 4px solid $MAIN_COLOR;
       }
     }
   }

@@ -16,7 +16,7 @@
     "@nuxtjs/axios": "^4.5.0",
     "@nuxtjs/proxy": "^1.1.2",
     "compass-mixins": "^0.12.10",
-    "element-ui": "^1.4.5",
+    "element-ui": "^1.4.12",
     "nuxt": "^1.0.0-rc11",
     "vue-style-loader": "^3.0.3"
   },

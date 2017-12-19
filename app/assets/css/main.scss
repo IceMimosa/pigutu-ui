@@ -9,6 +9,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #F2F3F5;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -17,4 +21,5 @@ html {
 .clearfix:after {
   content: "";
   clear: both;
+  display: block;
 }

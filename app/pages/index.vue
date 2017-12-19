@@ -105,7 +105,6 @@ $MAIN_COLOR: #6CF;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: #F2F3F5;
   padding-top: 80px;
 }
 .content-top {

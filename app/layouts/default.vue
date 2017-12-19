@@ -2,6 +2,7 @@
   <div class="main">
     <app-header active="index"/>
     <nuxt/>
+    <app-footer/>
   </div>
 </template>
 
@@ -9,11 +10,13 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import AppHeader from '~/components/AppHeader.vue'
+import AppFooter from '~/components/AppFooter.vue'
 Vue.use(ElementUI)
 
 export default {
   components: {
-    AppHeader
+    AppHeader,
+    AppFooter
   }
 }
 </script>

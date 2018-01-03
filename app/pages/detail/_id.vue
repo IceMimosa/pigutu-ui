@@ -1,5 +1,5 @@
 <template>
-  <div id="detail">
+  <div id="detail" class="bga-back-top">
     <div class="content clearfix">
       <div class="content-left">
         <div class="main">

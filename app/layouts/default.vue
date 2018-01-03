@@ -3,6 +3,8 @@
     <app-header active="index"/>
     <nuxt/>
     <app-footer/>
+    <app-back-top :threshold="150" :right="160" :bottom="60" :width="50" :height="50" :svgMajorColor="'#7b79e5'"
+                 :svgMinorColor="'#ba6fda'" :svgType="'rocket_smoke'"/>
   </div>
 </template>
 
@@ -11,12 +13,14 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
+import AppBackTop from '~/components/common/AppBackTop.vue'
 Vue.use(ElementUI)
 
 export default {
   components: {
     AppHeader,
-    AppFooter
+    AppFooter,
+    AppBackTop
   }
 }
 </script>

@@ -4,11 +4,26 @@
       <ul class="tabs clearfix">
         <li><nuxt-link to="/">全部</nuxt-link></li>
         <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
-          <nuxt-link to="/">{{ item.name }}</nuxt-link>
+          <nuxt-link :to="`/category/${item.id}`">{{ item.name }}</nuxt-link>
         </li>
       </ul>
     </div>
-
+    <div class="cate-list">
+      <ul class="clearfix">
+        <li v-for="o in 20" :key="o">
+          <el-card :body-style="{ padding: '0px', width: '200px' }">
+            <img src="http://element-cn.eleme.io/1.4/static/hamburger.50e4091.png" class="image">
+            <div style="padding: 14px;">
+              <span>好吃的汉堡</span>
+              <div class="bottom clearfix">
+                <time class="time">{{ currentDate }}</time>
+                <el-button type="text" class="button">操作按钮</el-button>
+              </div>
+            </div>
+          </el-card>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -24,7 +39,8 @@ export default {
   },
   asyncData ({ params }) {
     return {
-      id: params.id
+      id: params.id,
+      currentDate: new Date()
     }
   },
   data () {
@@ -53,13 +69,13 @@ $MAIN_COLOR: #6CF;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 80px;
+  padding-top: 60px;
   min-height: 600px;
 
   .header {
     width: 980px;
     margin: 0 auto;
-    border-bottom: 1px solid #6d757a;
+    // border-bottom: 1px solid #6d757a;
     .tabs {
       list-style: none outside none;
       li {
@@ -88,6 +104,39 @@ $MAIN_COLOR: #6CF;
       }
       a.nuxt-link-exact-active {
         border-bottom: 4px solid $MAIN_COLOR;
+      }
+    }
+  }
+
+  .cate-list {
+    width: 980px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: inline-block;
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        float: left;
+        margin-right: 32px;
+        margin-bottom: 16px;
+        .time {
+          font-size: 13px;
+          color: #999;
+        }
+        .bottom {
+          margin-top: 13px;
+          line-height: 12px;
+        }
+        .button {
+          padding: 0;
+          margin-top: 10px;
+          float: right;
+        }
+        .image {
+          width: 100%;
+          display: block;
+        }
       }
     }
   }

@@ -9,7 +9,7 @@
       </ul>
     </div>
     <div class="cate-list">
-      <ul class="clearfix">
+      <ul class="list clearfix">
         <li v-for="o in 20" :key="o">
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img src="http://element-cn.eleme.io/1.4/static/hamburger.50e4091.png" class="image">
@@ -23,6 +23,14 @@
           </el-card>
         </li>
       </ul>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage1"
+        :page-size="100"
+        layout="total, prev, pager, next"
+        :total="1000">
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -113,13 +121,13 @@ $MAIN_COLOR: #6CF;
     margin: 0 auto;
     margin-top: 20px;
     display: inline-block;
-    ul {
+    .list {
       list-style: none;
       padding: 0;
       li {
         float: left;
-        margin-right: 32px;
-        margin-bottom: 16px;
+        margin-right: 40px;
+        margin-bottom: 20px;
         .time {
           font-size: 13px;
           color: #999;
@@ -138,6 +146,10 @@ $MAIN_COLOR: #6CF;
           display: block;
         }
       }
+    }
+    .el-pagination {
+      margin-top: 10px;
+      text-align: left;
     }
   }
 }

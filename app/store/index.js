@@ -13,7 +13,7 @@ export const actions = {
   //   await dispatch('')
   // },
   async getData ({ commit }) {
-    const urls = await this.$axios.$get('/api/pigutu/test')
+    const urls = await this.$axios.$get('/api/index')
     commit('getData', urls)
   }
 }

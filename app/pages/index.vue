@@ -2,27 +2,27 @@
   <div class="container">
     <div class="content-top clearfix">
       <el-carousel class="content-top-carousel" height="248px">
-        <el-carousel-item v-for="url in urls" :key="url">
+        <el-carousel-item v-for="carousel in urls.carousel" :key="carousel">
           <img
             width=400
             height=248
-            :src="url"
+            :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/thumb'"
           />
         </el-carousel-item>
       </el-carousel>
       <app-image
-        v-for="item in 6"
-        :key="item"
+        v-for="hot in urls.hot"
+        :key="hot"
         :width="160"
         :height="115"
-        :src="`http://s.moemoe.la/image/2017-10-09/2ca1636e-56d1-4b3a-af42-ca359963c889.jpg`"
+        :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/thumb'"
       />
     </div>
-    <div class="content-0 clearfix" v-for="item in 4" :key="item">
+    <div class="content-0 clearfix" v-for="category in urls.categories" :key="category">
       <div class="mingxing">
         <div class="intro-title">
           <div class="header-line clearfix">
-            <a class="name" href="javascript:;">明星</a>
+            <a class="name" href="javascript:;">{{category.name}}</a>
             <el-button class="more" size="mini">
               更多<i class="el-icon-arrow-right el-icon--right"></i>
             </el-button>
@@ -33,11 +33,11 @@
         </div>
         <div class="intro-img clearfix">
           <app-image
-            v-for="item in 8"
+            v-for="item in category.categoryItem"
             :key="item"
             :width="160"
             :height="115"
-            :src="`http://s.moemoe.la/image/2017-10-17/835fabc6-9c7f-4714-ba97-c7224e1d9b90.png`"
+            :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
           />
         </div>
       </div>
@@ -46,32 +46,35 @@
           <a class="name" href="javascript:;">浏览排行</a>
           <a class="more" href="javascript:;">更多</a>
         </div>
-        <div class="rank-ul">
+                <div class="rank-ul">
           <ul>
-            <li class="has-image" v-for="item in 3" :key="item">
-              <i>{{ item }}</i>
+            <li class="has-image" v-for="(item,index) in category.categoryViewCount" :key="item">
+              <div v-if="index < 3">
+                <i>{{ index+1 }}</i>
               <a class="detail">
                 <div class="image">
                   <app-image
                     :width="80"
                     :height="50"
-                    :src="`http://s.moemoe.la/image/2017-10-17/835fabc6-9c7f-4714-ba97-c7224e1d9b90.png`"
+                    :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
                   />
                 </div>
                 <div class="text">
-                  <p class="title">这首曲子成就了多少经典，至今无法被超越</p>
-                  <p class="point">综合评分：21.0万</p>
+                  <p class="title">{{item.title}}</p>
+                  <p class="point">浏览：{{item.viewCount}}</p>
                 </div>
               </a>
-            </li>
-            <li class="no-image" v-for="item in 2" :key="item">
-              <i>{{ item }}</i>
+              </div>
+              <div v-else>
+                <i>{{ index+1 }}</i>
               <a class="detail little">
                 <div class="text">
-                  <p class="title">这首曲子成就了多少经典，至今无法被超越</p>
+                  <p class="title">{{item.title}}</p>
                 </div>
               </a>
+              </div>
             </li>
+           
           </ul>
         </div>
       </div>
@@ -99,7 +102,7 @@ export default {
 </script>
 
 <style lang='scss'>
-$MAIN_COLOR: #6CF;
+$MAIN_COLOR: #6cf;
 .container {
   margin: 0 auto;
   justify-content: center;
@@ -121,7 +124,7 @@ $MAIN_COLOR: #6CF;
       line-height: 210px;
     }
     .el-carousel__arrow {
-      background-color: rgba(31, 45, 61, .6);
+      background-color: rgba(31, 45, 61, 0.6);
     }
   }
   .app-image {
@@ -230,7 +233,9 @@ $MAIN_COLOR: #6CF;
           width: 130px;
           text-align: left;
           margin-left: 10px;
-          font-family: PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,Helvetica Neue,Helvetica,sans-serif;          transition: color .3s ease;
+          font-family: PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei,
+            Microsoft Yahei, Helvetica Neue, Helvetica, sans-serif;
+          transition: color 0.3s ease;
           .title {
             height: 36px;
             line-height: 18px;

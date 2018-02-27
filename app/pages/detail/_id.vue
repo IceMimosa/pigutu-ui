@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="images">
-            <img v-for="detail in detailData.details" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt=""  />
+            <img v-for="detail in detailData.details" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt="" />
           </div>
     
         </div>
@@ -31,7 +31,7 @@
             <i class="el-icon-arrow-right" />
           </button>
           <div class="rec-img clearfix">
-            <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend">
+            <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend" @click="goImageSet(recommend.id)">
               <app-image
                 :width="200"
                 :height="120"
@@ -45,7 +45,7 @@
       <div class="content-right">
         <p class="title">最新点赞</p>
         <div class="content">
-          <div class="detail clearfix" v-for="like in detailData.likes" :key="like">
+          <div class="detail clearfix" v-for="like in detailData.likes" :key="like" @click="goImageSet(like.allImagesId)">
             <app-image
               :width="120"
               :height="80"
@@ -77,6 +77,11 @@ export default {
   computed: {
     ...mapState('detail', ['detailData'])
     // ...mapState('xxx', ['xx1', 'xx2']), 其他
+  },
+  methods: {
+    goImageSet: function (id) {
+      this.$router.push({ path: '/detail/' + id })
+    }
   }
 }
 </script>

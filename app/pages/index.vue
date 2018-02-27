@@ -17,7 +17,7 @@
         :width="160"
         :height="115"
         :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/thumb'"
-        @click="goImageSet(carousel.id)"
+        v-on:click.native="goImageSet(hot.id)"
       />
     </div>
     <div class="content-0 clearfix" v-for="category in urls.categories" :key="category">
@@ -40,7 +40,7 @@
             :width="160"
             :height="115"
             :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
-            @click="goImageSet(item.id)"
+            v-on:click.native="goImageSet(item.id)"
           />
         </div>
       </div>

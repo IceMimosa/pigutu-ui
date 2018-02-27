@@ -74,12 +74,11 @@ export default {
     AppImage
   },
   fetch ({ store }) {
-    return store.dispatch('getDetails')
+    return store.dispatch('detail/getDetails')
   },
   computed: {
-    ...mapState({
-      detailData: 'detailData'
-    })
+    ...mapState('detail', ['detailData'])
+    // ...mapState('xxx', ['xx1', 'xx2']), 其他
   }
 }
 </script>

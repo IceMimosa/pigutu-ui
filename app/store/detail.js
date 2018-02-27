@@ -12,8 +12,8 @@ export const actions = {
   // async nuxtServerInit ({ dispatch }) {
   //   await dispatch('')
   // },
-  async getDetails ({ commit }) {
-    const detailData = await this.$axios.$get('/api/detail/100')
+  async getDetails ({ commit }, { id }) {
+    const detailData = await this.$axios.$get(`/api/detail/${id}`)
     console.log(detailData)
     commit('getDetails', detailData)
   }

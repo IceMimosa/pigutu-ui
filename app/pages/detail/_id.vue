@@ -4,31 +4,25 @@
       <div class="content-left">
         <div class="main">
           <div class="title">
-            <h1>星座大全大全</h1>
+            <h1>{{detailData.imageDetail.title}}</h1>
           </div>
           <div class="tag clearfix">
-            <div>双子座</div>
-            <div>双子座</div>
-            <div>双子座</div>
+            <div v-for="label in detailData.imageDetail.label.split(',')" :key="label">{{label}}</div>
           </div>
           <div class="detail clearfix">
             <div class="upload-time">
-              <span>上传时间：2017-10-27 13:22:50</span>
+              <span>上传时间：{{detailData.imageDetail.createTime}}</span>
             </div>
             <div class="visit-info">
-              <span>浏览：78000</span>
+              <span>浏览：{{detailData.imageDetail.viewCount}}</span>
               <span>收藏：422</span>
-              <span>支持：97</span>
+              <span>支持：{{detailData.imageDetail.likeCount}}</span>
             </div>
           </div>
           <div class="images">
             <img v-for="detail in detailData.details" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt=""  />
           </div>
-          <el-pagination
-            small
-            layout="prev, pager, next"
-            :total="50">
-          </el-pagination>
+    
         </div>
         <div class="recommend clearfix">
           <p class="title">美图推荐</p>
@@ -37,13 +31,13 @@
             <i class="el-icon-arrow-right" />
           </button>
           <div class="rec-img clearfix">
-            <div class="img-detail" v-for="item in 4" :key="item">
+            <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend">
               <app-image
                 :width="200"
                 :height="120"
-                :src="`//s.moemoe.la/image/2017-10-25/1919b8d9-01b9-42d2-a91e-28c10837751b.png`"
+                :src="`http://img.pigutu.com/img/`+recommend.coverUrl+'/pigutu'"
               />
-              <p>这首曲子成就了多少经典，至今无法被超越</p>
+              <p>{{recommend.title}}</p>
             </div>
           </div>
         </div>
@@ -51,13 +45,13 @@
       <div class="content-right">
         <p class="title">最新点赞</p>
         <div class="content">
-          <div class="detail clearfix" v-for="item in 6" :key="item">
+          <div class="detail clearfix" v-for="like in detailData.likes" :key="like">
             <app-image
               :width="120"
               :height="80"
-              :src="`//s.moemoe.la/image/2017-10-25/1919b8d9-01b9-42d2-a91e-28c10837751b.png`"
+              :src="`http://img.pigutu.com/img/`+like.coverUrl+'/thumb'"
             />
-            <p class="title">这首曲子成就了多少经典，至今无法被超越</p>
+            <p class="title">{{like.title}}</p>
           </div>
         </div>
       </div>
@@ -73,8 +67,12 @@ export default {
   components: {
     AppImage
   },
-  fetch ({ store }) {
-    return store.dispatch('detail/getDetails')
+  fetch ({ store, params }) {
+    const id = params.id
+    return store.dispatch('detail/getDetails', {id: id})
+  },
+  asyncData ({ params }) {
+    return {id: params.id}
   },
   computed: {
     ...mapState('detail', ['detailData'])
@@ -84,8 +82,8 @@ export default {
 </script>
 
 <style lang="scss">
-$MAIN_COLOR: #6CF;
-#detail{
+$MAIN_COLOR: #6cf;
+#detail {
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -102,9 +100,9 @@ $MAIN_COLOR: #6CF;
       float: left;
 
       @mixin left-border {
-        background-color: #FFF;
-        border: 1px solid #E2E9EC;
-        box-shadow: 0 2px 6px 0 rgba(36, 33, 46, .08);
+        background-color: #fff;
+        border: 1px solid #e2e9ec;
+        box-shadow: 0 2px 6px 0 rgba(36, 33, 46, 0.08);
         border-radius: 10px;
         padding: 10px 20px;
       }
@@ -124,8 +122,8 @@ $MAIN_COLOR: #6CF;
         .tag {
           height: 24px;
           div {
-            border: 1px solid #F2F3F5;
-            background-color: #F2F3F5;
+            border: 1px solid #f2f3f5;
+            background-color: #f2f3f5;
             color: #666;
             cursor: default;
             max-width: 100%;
@@ -144,7 +142,7 @@ $MAIN_COLOR: #6CF;
           height: 30px;
           margin: 12px 0;
           vertical-align: middle;
-          border-bottom: 1px solid #ECECEC;
+          border-bottom: 1px solid #ececec;
           .upload-time {
             height: 24px;
             line-height: 24px;
@@ -230,9 +228,9 @@ $MAIN_COLOR: #6CF;
       height: auto;
       float: left;
       margin-left: 20px;
-      background-color: #FFF;
-      border: 1px solid #E2E9EC;
-      box-shadow: 0 2px 6px 0 rgba(36, 33, 46, .08);
+      background-color: #fff;
+      border: 1px solid #e2e9ec;
+      box-shadow: 0 2px 6px 0 rgba(36, 33, 46, 0.08);
       border-radius: 10px;
 
       .title {

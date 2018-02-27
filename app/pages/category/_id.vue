@@ -10,9 +10,9 @@
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="o in 20" :key="o">
+        <li v-for="imageList in imageListData" :key="imageList">
           <el-card :body-style="{ padding: '0px', width: '200px' }">
-            <img src="http://element-cn.eleme.io/1.4/static/hamburger.50e4091.png" class="image">
+            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
               <span>好吃的汉堡</span>
               <div class="bottom clearfix">
@@ -36,20 +36,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppImage from '~/components/common/AppImage.vue'
 
 export default {
   components: {
     AppImage
   },
-  fetch ({ params }) {
-    // const id = params.id
+  fetch ({ store }) {
+    store.dispatch('category/getCategory')
   },
-  asyncData ({ params }) {
-    return {
-      id: params.id,
-      currentDate: new Date()
-    }
+  computed: {
+    ...mapState('category', ['imageListData'])
   },
   data () {
     return {

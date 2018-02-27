@@ -7,18 +7,18 @@
             width=400
             height=248
             :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/thumb'"
+            @click="goImageSet(carousel.id)"
           />      
         </el-carousel-item>
       </el-carousel>
-      <a href="http://www.w3school.com.cn">
       <app-image
         v-for="hot in urls.hot"
         :key="hot"
         :width="160"
         :height="115"
         :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/thumb'"
+        @click="goImageSet(carousel.id)"
       />
-      </a>
     </div>
     <div class="content-0 clearfix" v-for="category in urls.categories" :key="category">
       <div class="mingxing">
@@ -40,6 +40,7 @@
             :width="160"
             :height="115"
             :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
+            @click="goImageSet(item.id)"
           />
         </div>
       </div>
@@ -50,7 +51,7 @@
         </div>
                 <div class="rank-ul">
           <ul>
-            <li class="has-image" v-for="(item,index) in category.categoryViewCount" :key="item">
+            <li class="has-image" v-for="(item,index) in category.categoryViewCount" :key="item"  @click="goImageSet(item.id)">
               <div v-if="index < 3">
                 <i>{{ index+1 }}</i>
               <a class="detail">
@@ -99,6 +100,11 @@ export default {
     ...mapState({
       urls: 'urls'
     })
+  },
+  methods: {
+    goImageSet: function (id) {
+      this.$router.push({ path: 'detail/' + id })
+    }
   }
 }
 </script>

@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="images">
-            <img src="http://i0.hdslb.com/bfs/vc/95ac8e24935ba191270f52658543327cad2c9504.jpg" alt="" v-for="item in 5" :key="item" />
+            <img v-for="detail in detailData.details" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt=""  />
           </div>
           <el-pagination
             small
@@ -66,19 +66,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppImage from '~/components/common/AppImage.vue'
 
 export default {
   components: {
     AppImage
   },
-  fetch ({ params }) {
-    // const id = params.id
+  fetch ({ store }) {
+    return store.dispatch('getDetails')
   },
-  asyncData ({ params }) {
-    return {
-      id: params.id
-    }
+  computed: {
+    ...mapState({
+      detailData: 'detailData'
+    })
   }
 }
 </script>

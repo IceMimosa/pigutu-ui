@@ -7,9 +7,10 @@
             width=400
             height=248
             :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/thumb'"
-          />
+          />      
         </el-carousel-item>
       </el-carousel>
+      <a href="http://www.w3school.com.cn">
       <app-image
         v-for="hot in urls.hot"
         :key="hot"
@@ -17,6 +18,7 @@
         :height="115"
         :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/thumb'"
       />
+      </a>
     </div>
     <div class="content-0 clearfix" v-for="category in urls.categories" :key="category">
       <div class="mingxing">

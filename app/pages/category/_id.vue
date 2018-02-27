@@ -14,7 +14,7 @@
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
-              <span>好吃的汉堡</span>
+              <span style="white-space:nowrap">{{imageList.title}}</span>
               <div class="bottom clearfix">
                 <time class="time">{{ currentDate }}</time>
                 <el-button type="text" class="button">操作按钮</el-button>

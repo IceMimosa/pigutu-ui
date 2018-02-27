@@ -44,7 +44,7 @@ export default {
     AppImage
   },
   fetch ({ store }) {
-    store.dispatch('category/getCategory')
+    return store.dispatch('category/getCategory')
   },
   computed: {
     ...mapState('category', ['imageListData'])

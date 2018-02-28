@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="footer clearfix">
-      <p>Copyright © 2017 屁股图 苏ICP备15000307号</p>
+      <p>Copyright © 2018 屁股图 苏ICP备15000307号</p>
     </div>
   </footer>
 </template>

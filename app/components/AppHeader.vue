@@ -31,7 +31,7 @@ export default {
   },
   data () {
     return {
-      keyword: ''
+      keyword: '请输入搜索内容'
     }
   },
   methods: {

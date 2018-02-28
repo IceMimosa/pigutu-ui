@@ -4,7 +4,7 @@
       <ul class="tabs clearfix">
         <li><nuxt-link to="/">全部</nuxt-link></li>
         <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
-          <nuxt-link :to="`/category/${item.id}`">{{ item.name }}</nuxt-link>
+          <nuxt-link :to="`/category/${item.id}?pageNo=${pageNo}`">{{ item.name }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -16,7 +16,7 @@
             <div style="padding: 14px;">
               <span style="white-space:nowrap">{{imageList.title}}</span>
               <div class="bottom clearfix">
-                <time class="time">{{ currentDate }}</time>
+                <time class="time"></time>
                 <el-button type="text" class="button">操作按钮</el-button>
               </div>
             </div>
@@ -43,8 +43,12 @@ export default {
   components: {
     AppImage
   },
-  fetch ({ store }) {
-    return store.dispatch('category/getCategory')
+  fetch ({ store, params, req }) {
+    const id = params.id
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaa' + req.query)
+    const pageNo = req.query.pageNo
+    console.log('aaa' + pageNo)
+    return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
   },
   computed: {
     ...mapState('category', ['imageListData'])
@@ -52,7 +56,16 @@ export default {
   methods: {
     goImageSet: function (id) {
       this.$router.push({ path: '/detail/' + id })
+    },
+    getUrlKey: function (name) {
+      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+      var r = window.location.search.substr(1).match(reg)
+      if (r != null) return unescape(r[2])
+      return null
     }
+  },
+  asyncData ({ params, req }) {
+    return {id: params.id}
   },
   data () {
     return {

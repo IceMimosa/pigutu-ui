@@ -9,9 +9,9 @@ export const mutations = {
 }
 
 export const actions = {
-  async getCategory ({ commit }) {
-    const imageListData = await this.$axios.$get('/api/category/1/1')
-    console.log(imageListData)
+  async getCategory ({ commit }, { id, pageNo }) {
+    const imageListData = await this.$axios.$get(`/api/category/${id}?pageNo=${pageNo}`)
+    console.log('---sss------' + pageNo + `/api/category/${id}?pageNo=${pageNo}`)
     commit('getCategory', imageListData)
   }
 }

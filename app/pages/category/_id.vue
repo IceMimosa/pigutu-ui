@@ -10,7 +10,7 @@
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="imageList in imageListData" :key="imageList">
+        <li v-for="imageList in imageListData" :key="imageList" @click="goImageSet(imageList.id)">
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
@@ -48,6 +48,11 @@ export default {
   },
   computed: {
     ...mapState('category', ['imageListData'])
+  },
+  methods: {
+    goImageSet: function (id) {
+      this.$router.push({ path: '/detail/' + id })
+    }
   },
   data () {
     return {

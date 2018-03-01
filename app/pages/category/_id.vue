@@ -45,9 +45,7 @@ export default {
   },
   fetch ({ store, params, req }) {
     const id = params.id
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaa' + req.query)
     const pageNo = req.query.pageNo
-    console.log('aaa' + pageNo)
     return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
   },
   computed: {
@@ -65,7 +63,7 @@ export default {
     }
   },
   asyncData ({ params, req }) {
-    return {id: params.id}
+    return {id: params.id, pageNo: req.query.pageNo}
   },
   data () {
     return {

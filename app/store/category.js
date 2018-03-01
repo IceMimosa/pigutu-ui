@@ -5,6 +5,9 @@ export const state = () => ({
 export const mutations = {
   getCategory (state, imageListData) {
     state.imageListData = imageListData
+  },
+  getPageNo (state, pageNo) {
+    state.pageNo = pageNo
   }
 }
 
@@ -13,5 +16,6 @@ export const actions = {
     const imageListData = await this.$axios.$get(`/api/category/${id}?pageNo=${pageNo}`)
     console.log('---sss------' + pageNo + `/api/category/${id}?pageNo=${pageNo}`)
     commit('getCategory', imageListData)
+    commit('getPageNo', pageNo)
   }
 }

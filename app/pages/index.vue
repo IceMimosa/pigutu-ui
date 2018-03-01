@@ -125,11 +125,17 @@ export default {
         case '比基尼':
           categoryId = 5
           break
-        case '内衣':
+        case '丝袜':
           categoryId = 6
           break
-        case 'cosplay':
+        case '内衣':
           categoryId = 7
+          break
+        case '制服':
+          categoryId = 8
+          break
+        case 'cosplay':
+          categoryId = 9
           break
       }
       this.$router.push({ path: 'category/' + categoryId + '?pageNo=1' })

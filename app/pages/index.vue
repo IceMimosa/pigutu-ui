@@ -25,7 +25,7 @@
         <div class="intro-title">
           <div class="header-line clearfix">
             <a class="name" href="javascript:;">{{category.name}}</a>
-            <el-button class="more" size="mini" @click="moreImage(category.category)">
+            <el-button class="more" size="mini" @click="moreImage(category.name)">
               更多<i class="el-icon-arrow-right el-icon--right"></i>
             </el-button>
           </div>
@@ -102,43 +102,7 @@ export default {
       this.$router.push({ path: 'detail/' + id })
     },
     moreImage: function (category) {
-      let categoryId = ''
-      if (category === '明星') {
-        categoryId = 0
-      }
-      switch (category) {
-        case '明星':
-          categoryId = 0
-          break
-        case '清纯':
-          categoryId = 1
-          break
-        case '运动':
-          categoryId = 2
-          break
-        case '动漫':
-          categoryId = 3
-          break
-        case '模特':
-          categoryId = 4
-          break
-        case '比基尼':
-          categoryId = 5
-          break
-        case '丝袜':
-          categoryId = 6
-          break
-        case '内衣':
-          categoryId = 7
-          break
-        case '制服':
-          categoryId = 8
-          break
-        case 'cosplay':
-          categoryId = 9
-          break
-      }
-      this.$router.push({ path: 'category/' + categoryId + '?pageNo=1' })
+      this.$router.push({ path: '/category/' + category })
     }
   }
 }

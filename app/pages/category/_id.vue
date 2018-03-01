@@ -4,7 +4,7 @@
       <ul class="tabs clearfix">
         <li><nuxt-link to="/">全部</nuxt-link></li>
         <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
-          <nuxt-link :to="`/category/${item.id}`">{{ item.name }}</nuxt-link>
+          <nuxt-link :to="`/category/${item.name}`">{{ item.name }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -17,7 +17,7 @@
               <span style="white-space:nowrap">{{imageList.title}}</span>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button">操作按钮</el-button>
+                <el-button type="text" class="button" @onclick="addLikeCount(imageList.id)">喜欢({{imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>
@@ -49,7 +49,8 @@ export default {
     return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
   },
   computed: {
-    ...mapState('category', ['imageListData'])
+    ...mapState('category', ['imageListData']),
+    ...mapState('addLikeCount', ['likeCount'])
   },
   methods: {
     goImageSet: function (id) {
@@ -60,6 +61,8 @@ export default {
       var r = window.location.search.substr(1).match(reg)
       if (r != null) return unescape(r[2])
       return null
+    },
+    addLikeCount: function (id) {
     }
   },
   asyncData ({ params, req }) {

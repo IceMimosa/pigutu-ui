@@ -7,7 +7,7 @@
             <h1>{{detailData.imageDetail.title}}</h1>
           </div>
           <div class="tag clearfix">
-            <div v-for="label in detailData.imageDetail.label.split(',')" :key="label">{{label}}</div>
+            <div v-for="label in detailData.imageDetail.label.split(',')" :key="label" @click="labelClick(label)">{{label}}</div>
           </div>
           <div class="detail clearfix">
             <div class="upload-time">
@@ -81,6 +81,9 @@ export default {
   methods: {
     goImageSet: function (id) {
       this.$router.push({ path: '/detail/' + id })
+    },
+    labelClick: function (label) {
+      this.$router.push({ path: '/search?pageNo=1&key=' + label })
     }
   }
 }

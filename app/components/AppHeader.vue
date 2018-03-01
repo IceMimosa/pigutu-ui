@@ -7,7 +7,7 @@
       <div class="tabs">
         <ul class="tabs-float clearfix">
           <li v-bind:class="{active: active === 'index'}"><nuxt-link to="/">首页</nuxt-link></li>
-          <li v-bind:class="{active: active === 'about'}"><nuxt-link to="/about">关于</nuxt-link></li>
+          <li v-bind:class="{active: active === 'about'}"><nuxt-link to="/category/明星">分类</nuxt-link></li>
           <li v-bind:class="{active: active === 'feedback'}"><a target="_blank" href="https://github.com/IceMimosa/pigutu-ui/issues">反馈</a></li>
         </ul>
       </div>
@@ -17,6 +17,7 @@
           icon="search"
           size="small"
           v-model="keyword"
+          @keyup.enter.native="onKeyDown($event)"
           :on-icon-click="handleIconClick">
         </el-input>
       </div>
@@ -31,12 +32,18 @@ export default {
   },
   data () {
     return {
-      keyword: '请输入搜索内容'
+      keyword: ''
     }
   },
   methods: {
     handleIconClick: function () {
-      alert('搜索')
+      this.$router.push({ path: '/search?pageNo=1&key=' + this.keyword })
+    },
+    onKeyDown: function (e) {
+      const keycode = window.event ? e.keyCode : e.which
+      if (keycode === 13) {
+        this.$router.push({ path: '/search?pageNo=1&key=' + this.keyword })
+      }
     }
   }
 }

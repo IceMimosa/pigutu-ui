@@ -4,7 +4,7 @@
       <ul class="tabs clearfix">
         <li><nuxt-link to="/">全部</nuxt-link></li>
         <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
-          <nuxt-link :to="`/category/${item.id}?pageNo=${pageNo}`">{{ item.name }}</nuxt-link>
+          <nuxt-link :to="`/category/${item.name}`">{{ item.name }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -43,29 +43,19 @@ export default {
   components: {
     AppImage
   },
-  fetch ({ store, params, req }) {
-    const id = params.id
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaa' + req.query)
-    const pageNo = req.query.pageNo
-    console.log('aaa' + pageNo)
-    return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
+  fetch ({ store, params, route }) {
+    const key = route.query.key
+    const pageNo = route.query.pageNo || 1
+    console.log('pageNo =  ' + pageNo)
+    return store.dispatch('search/getSearchImg', {key: key, pageNo: pageNo})
   },
   computed: {
-    ...mapState('category', ['imageListData'])
+    ...mapState('search', ['imageListData'])
   },
   methods: {
     goImageSet: function (id) {
       this.$router.push({ path: '/detail/' + id })
-    },
-    getUrlKey: function (name) {
-      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
-      var r = window.location.search.substr(1).match(reg)
-      if (r != null) return unescape(r[2])
-      return null
     }
-  },
-  asyncData ({ params, req }) {
-    return {id: params.id}
   },
   data () {
     return {
@@ -88,7 +78,7 @@ export default {
 
 <style lang="scss">
 $MAIN_COLOR: #6CF;
-#category{
+#search{
   margin: 0 auto;
   justify-content: center;
   align-items: center;

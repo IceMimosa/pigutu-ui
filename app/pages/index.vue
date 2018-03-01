@@ -25,11 +25,8 @@
         <div class="intro-title">
           <div class="header-line clearfix">
             <a class="name" href="javascript:;">{{category.name}}</a>
-            <el-button class="more" size="mini">
+            <el-button class="more" size="mini" @click="moreImage(category.category)">
               更多<i class="el-icon-arrow-right el-icon--right"></i>
-            </el-button>
-            <el-button class="refresh" size="mini" type="info">
-              <i class="iconfont icon-shuaxin"></i>换一批
             </el-button>
           </div>
         </div>
@@ -47,7 +44,6 @@
       <div class="view-rank">
         <div class="header-line clearfix">
           <a class="name" href="javascript:;">浏览排行</a>
-          <a class="more" href="javascript:;">更多</a>
         </div>
                 <div class="rank-ul">
           <ul>
@@ -104,6 +100,39 @@ export default {
   methods: {
     goImageSet: function (id) {
       this.$router.push({ path: 'detail/' + id })
+    },
+    moreImage: function (category) {
+      let categoryId = ''
+      if (category === '明星') {
+        categoryId = 0
+      }
+      switch (category) {
+        case '明星':
+          categoryId = 0
+          break
+        case '清纯':
+          categoryId = 1
+          break
+        case '运动':
+          categoryId = 2
+          break
+        case '动漫':
+          categoryId = 3
+          break
+        case '模特':
+          categoryId = 4
+          break
+        case '比基尼':
+          categoryId = 5
+          break
+        case '内衣':
+          categoryId = 6
+          break
+        case 'cosplay':
+          categoryId = 7
+          break
+      }
+      this.$router.push({ path: 'category/' + categoryId + '?pageNo=1' })
     }
   }
 }

@@ -4,7 +4,7 @@
       <ul class="tabs clearfix">
         <li><nuxt-link to="/">全部</nuxt-link></li>
         <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
-          <nuxt-link :to="`/category/${item.id}?pageNo=${pageNo}`">{{ item.name }}</nuxt-link>
+          <nuxt-link :to="`/category/${item.id}`">{{ item.name }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -43,9 +43,9 @@ export default {
   components: {
     AppImage
   },
-  fetch ({ store, params, req }) {
+  fetch ({ store, params, route }) {
     const id = params.id
-    const pageNo = req.query.pageNo
+    const pageNo = route.query.pageNo || 1
     return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
     }
   },
   asyncData ({ params, req }) {
-    return {id: params.id, pageNo: req.query.pageNo}
+    return {id: params.id}
   },
   data () {
     return {

@@ -17,7 +17,7 @@
               <span style="white-space:nowrap">{{imageList.title}}</span>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button">操作按钮</el-button>
+                <el-button type="text" class="button">喜欢({{imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>

@@ -52,7 +52,7 @@ export default {
   },
   asyncData ({ query }) {
     console.log('query pageNo= ' + query.pageNo)
-    const pageNo = query.pageNo
+    const pageNo = parseInt(query.pageNo)
     return {pageNo: pageNo}
   },
   methods: {

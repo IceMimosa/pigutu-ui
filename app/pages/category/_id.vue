@@ -10,14 +10,14 @@
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="imageList in imageListData" :key="imageList" @click="goImageSet(imageList.id)">
+        <li v-for="imageList in imageListData" :key="imageList">
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
               <span style="white-space:nowrap">{{imageList.title}}</span>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button" @onclick="addLikeCount(imageList.id)">喜欢({{imageList.likeCount}})</el-button>
+                <el-button type="text" class="button" @click="addLikeCount(imageList.id)">喜欢({{imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>
@@ -63,6 +63,8 @@ export default {
       return null
     },
     addLikeCount: function (id) {
+      alert('a' + id)
+      this.$store.dispatch('category/addLikeCount', {id: id})
     }
   },
   asyncData ({ params, req }) {

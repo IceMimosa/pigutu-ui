@@ -20,8 +20,10 @@ export const actions = {
     commit('getCategory', imageListData)
   },
   async addLikeCount ({ commit }, { id }) {
+    alert(id)
     id = encodeURI(id)
-    const likeCount = await this.$axios.$get(`/like?id=${id}`)
+    const likeCount = await this.$axios.$get(`/api/like?id=${id}`)
+    alert(likeCount)
     commit('addLikeCount', likeCount)
   }
 }

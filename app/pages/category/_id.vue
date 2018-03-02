@@ -3,7 +3,7 @@
     <div class="header">
       <ul class="tabs clearfix">
         <li><nuxt-link to="/">全部</nuxt-link></li>
-        <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
+        <li v-for="item in categoryData" v-bind:class="{active: id == item.name}" :key="item">
           <nuxt-link :to="`/category/${item.name}`">{{ item.name }}</nuxt-link>
         </li>
       </ul>
@@ -14,7 +14,7 @@
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
-              <span style="white-space:nowrap">{{imageList.title}}</span>
+              <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
                 <time class="time"></time>
                 <el-button type="text" class="button" @click="addLikeCount(imageList.id)">喜欢({{imageList.likeCount}})</el-button>
@@ -124,6 +124,7 @@ $MAIN_COLOR: #6CF;
         }
         &.active a {
           color: $MAIN_COLOR;
+          border-bottom: 4px solid $MAIN_COLOR;
         }
         a:hover {
           border-bottom: 4px solid $MAIN_COLOR;

@@ -7,7 +7,7 @@
       <div class="tabs">
         <ul class="tabs-float clearfix">
           <li v-bind:class="{active: active === 'index'}"><nuxt-link to="/">首页</nuxt-link></li>
-          <li v-bind:class="{active: active === 'about'}"><nuxt-link to="/category/明星">分类</nuxt-link></li>
+          <li v-bind:class="{active: active === 'category'}"><nuxt-link to="/category/明星">分类</nuxt-link></li>
           <li v-bind:class="{active: active === 'feedback'}"><a target="_blank" href="https://github.com/IceMimosa/pigutu-ui/issues">反馈</a></li>
         </ul>
       </div>

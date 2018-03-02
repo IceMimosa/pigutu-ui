@@ -22,7 +22,7 @@
           <div class="images">
             <img v-for="detail in detailData.details" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt="" />
           </div>
-    
+
         </div>
         <div class="recommend clearfix">
           <p class="title">美图推荐</p>
@@ -34,7 +34,7 @@
             <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend" @click="goImageSet(recommend.id)">
               <app-image
                 :width="200"
-                :height="120"
+                :height="280"
                 :src="`http://img.pigutu.com/img/`+recommend.coverUrl+'/pigutu'"
               />
               <p>{{recommend.title}}</p>
@@ -48,7 +48,7 @@
           <div class="detail clearfix" v-for="like in detailData.likes" :key="like" @click="goImageSet(like.allImagesId)">
             <app-image
               :width="120"
-              :height="80"
+              :height="100"
               :src="`http://img.pigutu.com/img/`+like.coverUrl+'/thumb'"
             />
             <p class="title">{{like.title}}</p>
@@ -222,6 +222,9 @@ $MAIN_COLOR: #6cf;
             margin-bottom: 16px;
             p {
               padding: 2px 4px 0 4px;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
               text-align: left;
               font-size: 12px;
               color: #666;

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content-top clearfix">
       <el-carousel class="content-top-carousel" height="248px">
-        <el-carousel-item v-for="carousel in urls.carousel" :key="carousel">
+        <el-carousel-item v-for="carousel in urls.carousel" :key="carousel" style="cursor:pointer">
           <img
             width=400
             height=248

@@ -10,7 +10,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'pigutu美女图片 - 明星美女写真专辑 高清性感美女图片欣赏',
+    title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏',
     meta: [
       { charset: 'utf-8' },
       { name: 'keywords', content: '美女,图片,美女图片,美女写真,私房,写真,妹子图' },

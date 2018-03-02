@@ -14,7 +14,7 @@
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
-              <span style="white-space:nowrap">{{imageList.title}}</span>
+              <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
                 <time class="time"></time>
                 <el-button type="text" class="button">喜欢({{imageList.likeCount}})</el-button>
@@ -28,7 +28,7 @@
         @current-change="handleCurrentChange"
         :current-page.sync="pageNo"
         :page-size="20"
-        layout="total, prev, pager, next"
+        layout="prev, pager, next"
         :total="updateImg.total">
       </el-pagination>
     </div>

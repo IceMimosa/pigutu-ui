@@ -17,7 +17,7 @@
               <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button" @click="addLikeCount(index)">喜欢({{imageList.likeCount}})</el-button>
+                <el-button type="text" class="button" @click="addLikeCount(index)">喜欢({{likeCount || imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>
@@ -28,7 +28,7 @@
         @current-change="handleCurrentChange"
         :current-page.sync="pageNo"
         :page-size="20"
-        layout="total, prev, pager, next"
+        layout="prev, pager, next"
         :total="categoryData.total">
       </el-pagination>
     </div>
@@ -56,21 +56,19 @@ export default {
     goImageSet: function (id) {
       this.$router.push({ path: '/detail/' + id })
     },
-    getUrlKey: function (name) {
-      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
-      var r = window.location.search.substr(1).match(reg)
-      if (r != null) return unescape(r[2])
-      return null
+    asyncData: function ({query}) {
+      const pageNo = parseInt(query.pageNo)
+      return {pageNo: pageNo}
     },
     addLikeCount: function (index) {
-      alert('a' + index)
-      const id = this.$store.imageListData.get(0).id
+      const id = this.imageListData.data[index].title
       this.$store.dispatch('category/addLikeCount', {id: id})
     },
     handleCurrentChange: function (index) {
+      this.$router.push({ path: `/category/${this.$params.id}&pageNo=${index}` })
     }
   },
-  asyncData ({ params, req }) {
+  asyncData ({ params }) {
     return {id: params.id}
   },
   data () {

@@ -1,6 +1,6 @@
 <template>
   <div class="app-image" v-bind:style="{ width: width + 'px'}">
-    <img :src="src" :alt="alt" :width="width" :height="height"/>
+    <img :src="src" :alt="alt" :width="width" :height="height" style="cursor:pointer"/>
   </div>
 </template>
 

@@ -10,9 +10,9 @@
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="(imageList,index) in imageListData.data" :key="imageList">
+        <li v-for="(imageList,index) in imageListData.data" :key="imageList" >
           <el-card :body-style="{ padding: '0px', width: '200px' }">
-            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
+            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image"  @click="goImageSet(imageList.id)">
             <div style="padding: 14px;">
               <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
@@ -29,7 +29,7 @@
         :current-page.sync="pageNo"
         :page-size="20"
         layout="prev, pager, next"
-        :total="categoryData.total">
+        :total="imageListData.total">
       </el-pagination>
     </div>
   </div>
@@ -51,24 +51,21 @@ export default {
   computed: {
     ...mapState('category', ['imageListData', 'likeCount'])
   },
+  asyncData ({ params, query }) {
+    const pageNo = parseInt(query.pageNo || 1)
+    return {id: params.id, pageNo: pageNo}
+  },
   methods: {
     goImageSet: function (id) {
       this.$router.push({ path: '/detail/' + id })
-    },
-    asyncData: function ({query}) {
-      const pageNo = parseInt(query.pageNo)
-      return {pageNo: pageNo}
     },
     addLikeCount: function (index) {
       const id = this.imageListData.data[index].id
       this.$store.dispatch('category/addLikeCount', {index: index, id: id})
     },
     handleCurrentChange: function (index) {
-      this.$router.push({ path: `/category/${this.$params.id}&pageNo=${index}` })
+      this.$router.push({ path: `/category/${this.id}?pageNo=${index}` })
     }
-  },
-  asyncData ({ params }) {
-    return {id: params.id}
   },
   data () {
     return {
@@ -164,6 +161,7 @@ $MAIN_COLOR: #6CF;
         .image {
           width: 100%;
           display: block;
+          cursor: pointer;
         }
       }
     }

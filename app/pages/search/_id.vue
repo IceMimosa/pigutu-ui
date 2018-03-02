@@ -10,14 +10,14 @@
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="imageList in imageListData.data" :key="imageList" @click="goImageSet(imageList.id)">
+        <li v-for="(imageList,index) in imageListData.data" :key="imageList">
           <el-card :body-style="{ padding: '0px', width: '200px' }">
-            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
+            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image"  @click="goImageSet(imageList.id)">
             <div style="padding: 14px;">
               <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button">喜欢({{imageList.likeCount}})</el-button>
+                <el-button type="text" class="button"  @click="addLikeCount(index)">喜欢({{imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>
@@ -61,6 +61,10 @@ export default {
     },
     handleCurrentChange: function (index) {
       this.$router.push({ path: `/search?key=${this.$route.query.key}&pageNo=${index}` })
+    },
+    addLikeCount: function (index) {
+      const id = this.imageListData.data[index].id
+      this.$store.dispatch('search/addLikeCount', {index: index, id: id})
     }
   },
   data () {
@@ -157,6 +161,7 @@ $MAIN_COLOR: #6CF;
         .image {
           width: 100%;
           display: block;
+          cursor: pointer;
         }
       }
     }

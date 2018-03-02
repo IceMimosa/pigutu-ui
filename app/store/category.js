@@ -1,6 +1,5 @@
 export const state = () => ({
-  imageListData: [],
-  likeCount: []
+  imageListData: []
 })
 
 export const mutations = {

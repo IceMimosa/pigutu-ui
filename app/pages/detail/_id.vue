@@ -12,6 +12,7 @@
           <div class="detail clearfix">
             <div class="upload-time">
               <span>上传时间：{{detailData.imageDetail.createTime}}</span>
+              <el-button type="text" class="button" @click="addLikeCount(detailData.imageDetail.id)">喜欢({{detailData.imageDetail.likeCount}})</el-button>
             </div>
             <div class="visit-info">
               <span>浏览：{{detailData.imageDetail.viewCount}}</span>
@@ -87,6 +88,9 @@ export default {
     },
     changeRecommend: function () {
       this.$store.dispatch('detail/randomRecommend')
+    },
+    addLikeCount: function (id) {
+      this.$store.dispatch('detail/addLikeCount', {id: id})
     }
   }
 }
@@ -162,6 +166,7 @@ $MAIN_COLOR: #6cf;
             color: #999;
             span {
               font-weight: bold;
+              padding: 0 6px;
             }
           }
           .visit-info {

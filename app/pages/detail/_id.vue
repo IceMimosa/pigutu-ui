@@ -35,7 +35,7 @@
               <app-image
                 :width="200"
                 :height="280"
-                :src="`http://img.pigutu.com/img/`+recommend.coverUrl+'/pigutu'"
+                :src="`http://img.pigutu.com/img/`+recommend.coverUrl+'/recommend'"
               />
               <p>{{recommend.title}}</p>
             </div>
@@ -49,7 +49,7 @@
             <app-image
               :width="120"
               :height="100"
-              :src="`http://img.pigutu.com/img/`+like.coverUrl+'/thumb'"
+              :src="`http://img.pigutu.com/img/`+like.coverUrl+'/like'"
             />
             <p class="title">{{like.title}}</p>
           </div>

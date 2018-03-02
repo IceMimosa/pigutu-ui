@@ -7,8 +7,8 @@ export const mutations = {
   getCategory (state, imageListData) {
     state.imageListData = imageListData
   },
-  addLikeCount (state, likeCount) {
-    state.likeCount = likeCount
+  addLikeCount (state, {index, likeCount}) {
+    state.imageListData.data[index].likeCount = likeCount
   }
 }
 
@@ -16,14 +16,10 @@ export const actions = {
   async getCategory ({ commit }, { id, pageNo }) {
     id = encodeURI(id)
     const imageListData = await this.$axios.$get(`/api/category/${id}?pageNo=${pageNo}`)
-    console.log('---sss------' + pageNo + `/api/category/${id}?pageNo=${pageNo}`)
     commit('getCategory', imageListData)
   },
-  async addLikeCount ({ commit }, { id }) {
-    alert(id)
-    id = encodeURI(id)
-    const likeCount = await this.$axios.$get(`/api/like?id=${id}`)
-    alert(likeCount)
-    commit('addLikeCount', likeCount)
+  async addLikeCount ({ commit }, { index, id }) {
+    const likeCount = await this.$axios.$get(`/api/like?id=${encodeURI(id)}`)
+    commit('addLikeCount', {index, likeCount})
   }
 }

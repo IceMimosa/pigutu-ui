@@ -17,7 +17,7 @@
               <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button" @click="addLikeCount(index)">喜欢({{likeCount || imageList.likeCount}})</el-button>
+                <el-button type="text" class="button" @click="addLikeCount(index)">喜欢({{imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>
@@ -49,8 +49,7 @@ export default {
     return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
   },
   computed: {
-    ...mapState('category', ['imageListData']),
-    ...mapState('addLikeCount', ['likeCount'])
+    ...mapState('category', ['imageListData', 'likeCount'])
   },
   methods: {
     goImageSet: function (id) {
@@ -61,8 +60,8 @@ export default {
       return {pageNo: pageNo}
     },
     addLikeCount: function (index) {
-      const id = this.imageListData.data[index].title
-      this.$store.dispatch('category/addLikeCount', {id: id})
+      const id = this.imageListData.data[index].id
+      this.$store.dispatch('category/addLikeCount', {index: index, id: id})
     },
     handleCurrentChange: function (index) {
       this.$router.push({ path: `/category/${this.$params.id}&pageNo=${index}` })

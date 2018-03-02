@@ -6,7 +6,7 @@
           <img
             width=400
             height=248
-            :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/thumb'"
+            :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/carousel'"
             @click="goImageSet(carousel.id)"
           />      
         </el-carousel-item>
@@ -16,7 +16,7 @@
         :key="hot"
         :width="160"
         :height="115"
-        :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/thumb'"
+        :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/hot'"
         v-on:click.native="goImageSet(hot.id)"
       />
     </div>
@@ -36,7 +36,7 @@
             :key="item"
             :width="160"
             :height="115"
-            :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
+            :src="'http://img.pigutu.com/img/'+item.coverUrl+'/hot'"
             v-on:click.native="goImageSet(item.id)"
           />
         </div>
@@ -55,7 +55,7 @@
                   <app-image
                     :width="80"
                     :height="50"
-                    :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
+                    :src="'http://img.pigutu.com/img/'+item.coverUrl+'/rank'"
                   />
                 </div>
                 <div class="text">

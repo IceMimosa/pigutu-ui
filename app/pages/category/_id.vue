@@ -10,14 +10,14 @@
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="imageList in imageListData" :key="imageList">
+        <li v-for="(imageList,index) in imageListData.data" :key="imageList">
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
               <span style="white-space:nowrap">{{imageList.title}}</span>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button" @click="addLikeCount(imageList.id)">喜欢({{imageList.likeCount}})</el-button>
+                <el-button type="text" class="button" @click="addLikeCount(index)">喜欢({{imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>
@@ -26,10 +26,10 @@
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page.sync="currentPage1"
-        :page-size="100"
+        :current-page.sync="pageNo"
+        :page-size="20"
         layout="total, prev, pager, next"
-        :total="1000">
+        :total="categoryData.total">
       </el-pagination>
     </div>
   </div>
@@ -44,7 +44,7 @@ export default {
     AppImage
   },
   fetch ({ store, params, route }) {
-    const id = params.id
+    const id = params.id || '明星'
     const pageNo = route.query.pageNo || 1
     return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
   },
@@ -62,9 +62,12 @@ export default {
       if (r != null) return unescape(r[2])
       return null
     },
-    addLikeCount: function (id) {
-      alert('a' + id)
+    addLikeCount: function (index) {
+      alert('a' + index)
+      const id = this.$store.imageListData.get(0).id
       this.$store.dispatch('category/addLikeCount', {id: id})
+    },
+    handleCurrentChange: function (index) {
     }
   },
   asyncData ({ params, req }) {

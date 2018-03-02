@@ -7,8 +7,8 @@ export const mutations = {
   getCategory (state, imageListData) {
     state.imageListData = imageListData
   },
-  addLikeCount (state, imageListData) {
-    state.imageListData = imageListData
+  addLikeCount (state, likeCount) {
+    state.likeCount = likeCount
   }
 }
 

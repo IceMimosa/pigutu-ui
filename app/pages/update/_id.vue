@@ -1,16 +1,16 @@
 <template>
-  <div id="search">
+  <div id="update">
     <div class="header">
       <ul class="tabs clearfix">
         <li><nuxt-link to="/">全部</nuxt-link></li>
-        <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
+        <li v-for="item in categoryData" v-bind:class="{active: name == item.name}" :key="item">
           <nuxt-link :to="`/category/${item.name}`">{{ item.name }}</nuxt-link>
         </li>
       </ul>
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="imageList in imageListData.data" :key="imageList" @click="goImageSet(imageList.id)">
+        <li v-for="(imageList,index) in updateImg.data" :key="imageList" @click="goImageSet(imageList.id)">
           <el-card :body-style="{ padding: '0px', width: '200px' }">
             <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
             <div style="padding: 14px;">
@@ -26,10 +26,10 @@
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page.sync="imageListData.pageNo"
+        :current-page.sync="pageNo"
         :page-size="20"
         layout="total, prev, pager, next"
-        :total="imageListData.total">
+        :total="updateImg.total">
       </el-pagination>
     </div>
   </div>
@@ -44,19 +44,23 @@ export default {
     AppImage
   },
   fetch ({ store, params, route }) {
-    const key = route.query.key
     const pageNo = route.query.pageNo || 1
-    return store.dispatch('search/getSearchImg', {key: key, pageNo: pageNo})
+    return store.dispatch('update/getUpdateImg', {pageNo: pageNo})
   },
   computed: {
-    ...mapState('search', ['imageListData'])
+    ...mapState('update', ['updateImg'])
+  },
+  asyncData ({ query }) {
+    console.log('query pageNo= ' + query.pageNo)
+    const pageNo = query.pageNo
+    return {pageNo: pageNo}
   },
   methods: {
     goImageSet: function (id) {
       this.$router.push({ path: '/detail/' + id })
     },
-    handleCurrentChange: function (index) {
-      this.$router.push({ path: `/search?key=${this.$route.query.key}&pageNo=${index}` })
+    handleCurrentChange: function (pageNo) {
+      this.$router.push({ path: `/update?pageNo=${pageNo}` })
     }
   },
   data () {
@@ -72,8 +76,7 @@ export default {
         {id: 7, name: '内衣', title: '性感妖娆'},
         {id: 8, name: '制服', title: '制服诱惑'},
         {id: 9, name: 'Cosplay', title: 'Cosplay'}
-      ],
-      pageNo: '1'
+      ]
     }
   }
 }
@@ -81,7 +84,7 @@ export default {
 
 <style lang="scss">
 $MAIN_COLOR: #6CF;
-#search{
+#update{
   margin: 0 auto;
   justify-content: center;
   align-items: center;

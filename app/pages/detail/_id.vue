@@ -26,8 +26,8 @@
         </div>
         <div class="recommend clearfix">
           <p class="title">美图推荐</p>
-          <button class="more">
-            <span>更多</span>
+          <button class="more" @click="changeRecommend()">
+            <span>换一批</span>
             <i class="el-icon-arrow-right" />
           </button>
           <div class="rec-img clearfix">
@@ -84,6 +84,9 @@ export default {
     },
     labelClick: function (label) {
       this.$router.push({ path: '/search?pageNo=1&key=' + label })
+    },
+    changeRecommend: function () {
+      this.$store.dispatch('detail/randomRecommend')
     }
   }
 }

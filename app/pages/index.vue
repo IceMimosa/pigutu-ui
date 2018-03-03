@@ -8,7 +8,7 @@
             height=248
             :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/carousel'"
             @click="goImageSet(carousel.id)"
-          />      
+          />
         </el-carousel-item>
       </el-carousel>
       <app-image
@@ -32,6 +32,7 @@
         </div>
         <div class="intro-img clearfix">
           <app-image
+            :lazy="true"
             v-for="item in category.categoryItem"
             :key="item"
             :width="160"
@@ -53,6 +54,7 @@
               <a class="detail">
                 <div class="image">
                   <app-image
+                    :lazy="true"
                     :width="80"
                     :height="50"
                     :src="'http://img.pigutu.com/img/'+item.coverUrl+'/rank'"
@@ -73,7 +75,6 @@
               </a>
               </div>
             </li>
-           
           </ul>
         </div>
       </div>

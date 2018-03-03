@@ -20,8 +20,8 @@
               <span>支持：{{detailData.imageDetail.likeCount}}</span>
             </div>
           </div>
-          <div class="images" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
-            <img v-for="detail in showData" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt="" />
+          <div class="images">
+            <img v-for="detail in showData" :key="detail" v-lazy="`http://img.pigutu.com/img/${detail.url}/pigutu`" alt="" />
           </div>
 
         </div>
@@ -34,9 +34,10 @@
           <div class="rec-img clearfix">
             <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend" @click="goImageSet(recommend.id)">
               <app-image
+                :lazy="true"
                 :width="200"
                 :height="280"
-                :src="`http://img.pigutu.com/img/`+recommend.coverUrl+'/recommend'"
+                :src="`http://img.pigutu.com/img/${recommend.coverUrl}/recommend`"
               />
               <p>{{recommend.title}}</p>
             </div>
@@ -76,7 +77,7 @@ export default {
     return {id: params.id}
   },
   computed: {
-    ...mapState('detail', ['detailData'])
+    ...mapState('detail', ['detailData', 'showData', 'recommendData'])
     // ...mapState('xxx', ['xx1', 'xx2']), 其他
   },
   methods: {
@@ -91,16 +92,6 @@ export default {
     },
     addLikeCount: function (id) {
       this.$store.dispatch('detail/addLikeCount', {id: id})
-    },
-    loadMore: function () {
-      this.busy = true
-      alert('loadMore')
-      setTimeout(() => {
-        for (var imageList of this.detailData.details) {
-          this.showData.add(imageList)
-        }
-        this.busy = false
-      }, 5000)
     }
   }
 }

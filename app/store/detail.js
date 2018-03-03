@@ -1,5 +1,5 @@
 export const state = () => ({
-  detailData: [],
+  detailData: {},
   recommendData: [],
   showData: []
 })

@@ -12,7 +12,7 @@
       <ul class="list clearfix">
         <li v-for="(imageList,index) in imageListData.data" :key="imageList" >
           <el-card :body-style="{ padding: '0px', width: '200px' }">
-            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image"  @click="goImageSet(imageList.id)">
+            <img v-lazy="`http://img.pigutu.com/img/${imageList.coverUrl}/thumb`" class="image"  @click="goImageSet(imageList.id)">
             <div style="padding: 14px;">
               <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
@@ -24,7 +24,6 @@
         </li>
       </ul>
       <el-pagination
-        @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page.sync="pageNo"
         :page-size="20"
@@ -46,14 +45,13 @@ export default {
   fetch ({ store, params, route }) {
     const id = params.id || '明星'
     const pageNo = route.query.pageNo || 1
-    return store.dispatch('category/getCategory', {id: id, pageNo: pageNo})
+    return store.dispatch('category/getCategory', { id: id, pageNo: parseInt(pageNo) })
   },
   computed: {
-    ...mapState('category', ['imageListData', 'likeCount'])
+    ...mapState('category', ['imageListData', 'pageNo'])
   },
-  asyncData ({ params, query }) {
-    const pageNo = parseInt(query.pageNo || 1)
-    return {id: params.id, pageNo: pageNo}
+  asyncData ({ params }) {
+    return { id: params.id }
   },
   methods: {
     goImageSet: function (id) {
@@ -64,7 +62,9 @@ export default {
       this.$store.dispatch('category/addLikeCount', {index: index, id: id})
     },
     handleCurrentChange: function (index) {
-      this.$router.push({ path: `/category/${this.id}?pageNo=${index}` })
+      window.location.href = `/category/${this.id}?pageNo=${index}`
+      // this.$router.push({ path: `/category/${this.id}?pageNo=${index}` })
+      // return this.$store.dispatch('category/getCategory', { id: this.id, pageNo: parseInt(index) })
     }
   },
   data () {

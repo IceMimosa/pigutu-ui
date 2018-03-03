@@ -14,9 +14,9 @@ import ElementUI from 'element-ui'
 import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import AppBackTop from '~/components/common/AppBackTop.vue'
-import infiniteScroll from 'vue-infinite-scroll'
-Vue.use(infiniteScroll)
+import VueLazyload from 'vue-lazyload'
 Vue.use(ElementUI)
+Vue.use(VueLazyload)
 
 export default {
   components: {

@@ -19,6 +19,7 @@
     "element-ui": "^1.4.12",
     "node-sass": "^4.7.2",
     "nuxt": "^1.0.0-rc11",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-style-loader": "^3.0.3"
   },
   "devDependencies": {

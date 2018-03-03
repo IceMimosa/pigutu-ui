@@ -1,11 +1,13 @@
 export const state = () => ({
   detailData: [],
-  recommendData: []
+  recommendData: [],
+  showData: []
 })
 
 export const mutations = {
   getDetails (state, detailData) {
     state.detailData = detailData
+    state.showData = detailData.details
   },
   randomRecommend (state, recommendData) {
     state.detailData.recommends = recommendData

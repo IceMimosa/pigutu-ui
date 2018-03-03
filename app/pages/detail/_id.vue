@@ -20,8 +20,8 @@
               <span>支持：{{detailData.imageDetail.likeCount}}</span>
             </div>
           </div>
-          <div class="images">
-            <img v-for="detail in detailData.details" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt="" />
+          <div class="images" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+            <img v-for="detail in showData" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt="" />
           </div>
 
         </div>
@@ -91,6 +91,16 @@ export default {
     },
     addLikeCount: function (id) {
       this.$store.dispatch('detail/addLikeCount', {id: id})
+    },
+    loadMore: function () {
+      this.busy = true
+      alert('loadMore')
+      setTimeout(() => {
+        for (var imageList of this.detailData.details) {
+          this.showData.add(imageList)
+        }
+        this.busy = false
+      }, 5000)
     }
   }
 }

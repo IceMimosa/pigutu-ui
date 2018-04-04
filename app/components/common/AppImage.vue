@@ -1,6 +1,7 @@
 <template>
   <div class="app-image" v-bind:style="{ width: width + 'px'}">
-    <img :src="src" :alt="alt" :width="width" :height="height"/>
+    <img v-if="lazy" v-lazy="src" :alt="alt" :width="width" :height="height" style="cursor:pointer"/>
+    <img v-else :src="src" :alt="alt" :width="width" :height="height" style="cursor:pointer"/>
   </div>
 </template>
 
@@ -10,7 +11,11 @@ export default {
     src: String,
     alt: String,
     width: [Number, String],
-    height: [Number, String]
+    height: [Number, String],
+    lazy: {
+      default: false,
+      type: Boolean
+    }
   }
 }
 </script>

@@ -7,11 +7,12 @@
             <h1>{{detailData.imageDetail.title}}</h1>
           </div>
           <div class="tag clearfix">
-            <div v-for="label in detailData.imageDetail.label.split(',')" :key="label" @click="labelClick(label)">{{label}}</div>
+            <div v-for="label in detailData.imageDetail.label.split(',')" :key="label" @click="labelClick(label)" style="cursor:pointer">{{label}}</div>
           </div>
           <div class="detail clearfix">
             <div class="upload-time">
               <span>上传时间：{{detailData.imageDetail.createTime}}</span>
+              <el-button type="text" class="button" @click="addLikeCount(detailData.imageDetail.id)">喜欢({{detailData.imageDetail.likeCount}})</el-button>
             </div>
             <div class="visit-info">
               <span>浏览：{{detailData.imageDetail.viewCount}}</span>
@@ -20,7 +21,7 @@
             </div>
           </div>
           <div class="images">
-            <img v-for="detail in detailData.details" :key="detail" :src="'http://img.pigutu.com/img/'+detail.url+'/pigutu'" alt="" />
+            <img v-for="detail in showData" :key="detail" v-lazy="`http://img.pigutu.com/img/${detail.url}/pigutu`" alt="" />
           </div>
 
         </div>
@@ -33,9 +34,10 @@
           <div class="rec-img clearfix">
             <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend" @click="goImageSet(recommend.id)">
               <app-image
+                :lazy="true"
                 :width="200"
                 :height="280"
-                :src="`http://img.pigutu.com/img/`+recommend.coverUrl+'/pigutu'"
+                :src="`http://img.pigutu.com/img/${recommend.coverUrl}/recommend`"
               />
               <p>{{recommend.title}}</p>
             </div>
@@ -49,7 +51,7 @@
             <app-image
               :width="120"
               :height="100"
-              :src="`http://img.pigutu.com/img/`+like.coverUrl+'/thumb'"
+              :src="`http://img.pigutu.com/img/`+like.coverUrl+'/like'"
             />
             <p class="title">{{like.title}}</p>
           </div>
@@ -75,7 +77,7 @@ export default {
     return {id: params.id}
   },
   computed: {
-    ...mapState('detail', ['detailData'])
+    ...mapState('detail', ['detailData', 'showData', 'recommendData'])
     // ...mapState('xxx', ['xx1', 'xx2']), 其他
   },
   methods: {
@@ -87,6 +89,9 @@ export default {
     },
     changeRecommend: function () {
       this.$store.dispatch('detail/randomRecommend')
+    },
+    addLikeCount: function (id) {
+      this.$store.dispatch('detail/addLikeCount', {id: id})
     }
   }
 }
@@ -162,6 +167,7 @@ $MAIN_COLOR: #6cf;
             color: #999;
             span {
               font-weight: bold;
+              padding: 0 6px;
             }
           }
           .visit-info {

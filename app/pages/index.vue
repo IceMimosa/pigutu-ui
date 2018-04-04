@@ -2,13 +2,13 @@
   <div class="container">
     <div class="content-top clearfix">
       <el-carousel class="content-top-carousel" height="248px">
-        <el-carousel-item v-for="carousel in urls.carousel" :key="carousel">
+        <el-carousel-item v-for="carousel in urls.carousel" :key="carousel" style="cursor:pointer">
           <img
             width=400
             height=248
-            :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/thumb'"
+            :src="'http://img.pigutu.com/img/'+carousel.coverUrl+'/carousel'"
             @click="goImageSet(carousel.id)"
-          />      
+          />
         </el-carousel-item>
       </el-carousel>
       <app-image
@@ -16,7 +16,7 @@
         :key="hot"
         :width="160"
         :height="115"
-        :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/thumb'"
+        :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/hot'"
         v-on:click.native="goImageSet(hot.id)"
       />
     </div>
@@ -32,11 +32,12 @@
         </div>
         <div class="intro-img clearfix">
           <app-image
+            :lazy="true"
             v-for="item in category.categoryItem"
             :key="item"
             :width="160"
             :height="115"
-            :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
+            :src="'http://img.pigutu.com/img/'+item.coverUrl+'/hot'"
             v-on:click.native="goImageSet(item.id)"
           />
         </div>
@@ -53,9 +54,10 @@
               <a class="detail">
                 <div class="image">
                   <app-image
+                    :lazy="true"
                     :width="80"
                     :height="50"
-                    :src="'http://img.pigutu.com/img/'+item.coverUrl+'/thumb'"
+                    :src="'http://img.pigutu.com/img/'+item.coverUrl+'/rank'"
                   />
                 </div>
                 <div class="text">
@@ -73,7 +75,6 @@
               </a>
               </div>
             </li>
-           
           </ul>
         </div>
       </div>

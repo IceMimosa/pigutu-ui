@@ -10,14 +10,14 @@
     </div>
     <div class="cate-list">
       <ul class="list clearfix">
-        <li v-for="(imageList,index) in updateImg.data" :key="imageList" @click="goImageSet(imageList.id)">
+        <li v-for="(imageList,index) in updateImg.data" :key="imageList" >
           <el-card :body-style="{ padding: '0px', width: '200px' }">
-            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
+            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image" @click="goImageSet(imageList.id)">
             <div style="padding: 14px;">
-              <span style="white-space:nowrap">{{imageList.title}}</span>
+              <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
                 <time class="time"></time>
-                <el-button type="text" class="button">喜欢({{imageList.likeCount}})</el-button>
+                <el-button type="text" class="button" @click="addLikeCount(index)">喜欢({{imageList.likeCount}})</el-button>
               </div>
             </div>
           </el-card>
@@ -28,7 +28,7 @@
         @current-change="handleCurrentChange"
         :current-page.sync="pageNo"
         :page-size="20"
-        layout="total, prev, pager, next"
+        layout="prev, pager, next"
         :total="updateImg.total">
       </el-pagination>
     </div>
@@ -61,6 +61,10 @@ export default {
     },
     handleCurrentChange: function (pageNo) {
       this.$router.push({ path: `/update?pageNo=${pageNo}` })
+    },
+    addLikeCount: function (index) {
+      const id = this.updateImg.data[index].id
+      this.$store.dispatch('update/addLikeCount', {index: index, id: id})
     }
   },
   data () {
@@ -156,6 +160,7 @@ $MAIN_COLOR: #6CF;
         .image {
           width: 100%;
           display: block;
+          cursor: pointer;
         }
       }
     }

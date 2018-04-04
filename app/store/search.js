@@ -5,6 +5,9 @@ export const state = () => ({
 export const mutations = {
   getSearchImg (state, imageListData) {
     state.imageListData = imageListData
+  },
+  addLikeCount (state, {index, likeCount}) {
+    state.imageListData.data[index].likeCount = likeCount
   }
 }
 
@@ -15,5 +18,9 @@ export const actions = {
       `/api/search/?key=${key}&pageNo=${pageNo}`
     )
     commit('getSearchImg', imageListData)
+  },
+  async addLikeCount ({ commit }, { index, id }) {
+    const likeCount = await this.$axios.$get(`/api/like?id=${encodeURI(id)}`)
+    commit('addLikeCount', {index, likeCount})
   }
 }

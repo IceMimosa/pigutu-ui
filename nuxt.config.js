@@ -1,8 +1,8 @@
 const path = require('path')
 
 // 后端proxy参数
-const BASE_URL = process.env.BASE_URL || 'http://www.pigutu.com:80'
-const PROXY_API_URL = process.PROXY_API_URL || 'http://www.pigutu.com:12222'
+const BASE_URL = process.env.BASE_URL || 'http://127.0.0.1:3000'
+const PROXY_API_URL = process.PROXY_API_URL || 'http://127.0.0.1:8080'
 
 module.exports = {
   srcDir: 'app/',

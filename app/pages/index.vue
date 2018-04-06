@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     goImageSet: function (id) {
-      this.$router.push({ path: 'detail/' + id })
+      this.$router.push({ path: '/detail/' + id })
     },
     moreImage: function (category) {
       this.$router.push({ path: '/category/' + category })

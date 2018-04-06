@@ -93,6 +93,22 @@ export default {
     addLikeCount: function (id) {
       this.$store.dispatch('detail/addLikeCount', {id: id})
     }
+  },
+  data () {
+    return {
+      title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏'
+    }
+  },
+  head () {
+    return {
+      title: this.detailData.imageDetail.title,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'keywords', content: '美女,图片,美女图片,美女写真,私房,写真,妹子图,' + this.detailData.imageDetail.label },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: this.detailData.imageDetail.title }
+      ]
+    }
   }
 }
 </script>

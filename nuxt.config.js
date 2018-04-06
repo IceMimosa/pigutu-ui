@@ -1,8 +1,8 @@
 const path = require('path')
 
 // 后端proxy参数
-const BASE_URL = process.env.BASE_URL || 'http://www.pigutu.com:80'
-const PROXY_API_URL = process.PROXY_API_URL || 'http://www.pigutu.com:12222'
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
+const PROXY_API_URL = process.PROXY_API_URL || 'http://www.pigutu.com:8080'
 
 module.exports = {
   srcDir: 'app/',
@@ -10,10 +10,8 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏',
     meta: [
       { charset: 'utf-8' },
-      { name: 'keywords', content: '美女,图片,美女图片,美女写真,私房,写真,妹子图' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'pigutu美女图片，收集精美的美女图片，包括明星美女写真图片专辑，大学校花美女贴图，性感车模写真等各类最新最好看的性感美女图片。' }
     ],

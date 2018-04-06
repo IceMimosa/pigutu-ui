@@ -105,6 +105,22 @@ export default {
     moreImage: function (category) {
       this.$router.push({ path: '/category/' + category })
     }
+  },
+  data () {
+    return {
+      title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏'
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'keywords', content: '美女,图片,美女图片,美女写真,私房,写真,妹子图' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'pigutu美女图片，收集精美的美女图片，包括明星美女写真图片专辑，大学校花美女贴图，性感车模写真等各类最新最好看的性感美女图片。' }
+      ]
+    }
   }
 }
 </script>

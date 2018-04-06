@@ -69,6 +69,9 @@ export default {
   },
   data () {
     return {
+      title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏',
+      keywords: '美女,图片,美女图片,美女写真,私房,写真,妹子图',
+      description: 'pigutu美女图片，收集精美的美女图片，包括明星美女写真图片专辑，大学校花美女贴图，性感车模写真等各类最新最好看的性感美女图片。',
       categoryData: [
         {id: 0, name: '明星', title: '名人明星'},
         {id: 1, name: '清纯', title: '唯美清纯'},
@@ -82,6 +85,17 @@ export default {
         {id: 9, name: 'Cosplay', title: 'Cosplay'}
       ],
       pageNo: '1'
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'keywords', content: this.keywords },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: this.description }
+      ]
     }
   }
 }

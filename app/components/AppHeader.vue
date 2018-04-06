@@ -2,7 +2,7 @@
   <header>
     <div class="header clearfix">
       <div class="logo">
-        <nuxt-link to="/"><i class="iconfont icon-pigutu-logo"></i></nuxt-link>
+        <a href="/"><i class="iconfont icon-pigutu-logo"></i></a>
       </div>
       <div class="tabs">
         <ul class="tabs-float clearfix">

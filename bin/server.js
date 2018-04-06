@@ -1,6 +1,6 @@
 const { Nuxt, Builder } = require('nuxt')
 const app = require('express')()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 80
 
 // We instantiate Nuxt.js with the options
 let config = require('../nuxt.config.js')

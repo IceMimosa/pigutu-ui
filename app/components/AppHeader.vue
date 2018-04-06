@@ -2,7 +2,7 @@
   <header>
     <div class="header clearfix">
       <div class="logo">
-        <a href="/"><i class="iconfont icon-pigutu-logo"></i></a>
+        <a href="/" style="text-decoration: none;"><i class="iconfont icon-pigutu-logo"></i></a>
       </div>
       <div class="tabs">
         <ul class="tabs-float clearfix">

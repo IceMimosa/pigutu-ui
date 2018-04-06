@@ -20,6 +20,7 @@ module.exports = {
       { rel: 'stylesheet', href: 'http://at.alicdn.com/t/font_429841_kq3juc9bl3c2qpvi.css' }
     ]
   },
+  script: [{src: 'http://img.pigutu.com/js/pigutupic.js'}],
   /*
   ** Customize the progress-bar color
   */

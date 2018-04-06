@@ -81,7 +81,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { mapState } from 'vuex'
 import AppImage from '~/components/common/AppImage.vue'

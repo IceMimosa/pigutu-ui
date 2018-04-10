@@ -12,7 +12,9 @@
       <ul class="list clearfix">
         <li v-for="(imageList,index) in imageListData.data" :key="imageList" >
           <el-card :body-style="{ padding: '0px', width: '200px' }">
-            <img v-lazy="`http://img.pigutu.com/img/${imageList.coverUrl}/thumb`" class="image"  @click="goImageSet(imageList.id)">
+            <router-link target="_blank" :to="'/detail/' + imageList.id">
+              <img v-lazy="`http://img.pigutu.com/img/${imageList.coverUrl}/thumb`" class="image">
+            </router-link>
             <div style="padding: 14px;">
               <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
@@ -62,7 +64,7 @@ export default {
       this.$store.dispatch('category/addLikeCount', {index: index, id: id})
     },
     handleCurrentChange: function (index) {
-      window.location.href = `/category/${this.id}?pageNo=${index}`
+      location.href = `/category/${this.id}?pageNo=${index}`
       // this.$router.push({ path: `/category/${this.id}?pageNo=${index}` })
       // return this.$store.dispatch('category/getCategory', { id: this.id, pageNo: parseInt(index) })
     }

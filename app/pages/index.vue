@@ -8,8 +8,8 @@
           </router-link>
         </el-carousel-item>
       </el-carousel>
-      <router-link target="_blank" :to="'/detail/' + hot.id">
-        <app-image v-for="hot in urls.hot" :key="hot" :width="160" :height="115" :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/hot'" />
+      <router-link target="_blank" v-for="hot in urls.hot" :key="hot" :to="'/detail/' + hot.id">
+        <app-image :width="160" :height="115" :src="'http://img.pigutu.com/img/'+hot.coverUrl+'/hot'" />
       </router-link>
     </div>
     <div class="content-0 clearfix" v-for="category in urls.categories" :key="category">
@@ -26,8 +26,8 @@
           </div>
         </div>
         <div class="intro-img clearfix">
-          <router-link target="_blank" :to="'/detail/' + item.id">
-            <app-image :lazy="true" v-for="item in category.categoryItem" :key="item" :width="160" :height="115" :src="'http://img.pigutu.com/img/'+item.coverUrl+'/hot'" />
+          <router-link target="_blank" v-for="item in category.categoryItem" :key="item" :to="'/detail/' + item.id">
+            <app-image :lazy="true" :width="160" :height="115" :src="'http://img.pigutu.com/img/'+item.coverUrl+'/hot'" />
           </router-link>
         </div>
       </div>
@@ -37,29 +37,27 @@
         </div>
         <div class="rank-ul">
           <ul>
-              <li class="has-image" v-for="(item,index) in category.categoryViewCount" :key="item">
-               <router-link target="_blank" :to="'/detail/'">
-                <div v-if="index < 3">
-                  <i>{{ index+1 }}</i>
-                  <a class="detail">
-                    <div class="image">  
-                      <app-image :lazy="true" :width="80" :height="50" :src="'http://img.pigutu.com/img/'+item.coverUrl+'/rank'" />
-                    </div>
-                    <div class="text">
-                      <p class="title">{{item.title}}</p>
-                      <p class="point">浏览：{{item.viewCount}}</p>
-                    </div>
-                  </a>
-                </div>
-                <div v-else>
-                  <i>{{ index+1 }}</i>
-                  <a class="detail little">
-                    <div class="text">
-                      <p class="title">{{item.title}}</p>
-                    </div>
-                  </a>
-                </div>
-               </router-link>
+            <li class="has-image" v-for="(item,index) in category.categoryViewCount" :key="item" >
+              <div v-if="index < 3">
+                <i>{{ index+1 }}</i>
+                <a class="detail" target="_blank" :href="'/detail/' + item.id">
+                  <div class="image">
+                    <app-image :lazy="true" :width="80" :height="50" :src="'http://img.pigutu.com/img/'+item.coverUrl+'/rank'" />
+                  </div>
+                  <div class="text">
+                    <p class="title">{{item.title}}</p>
+                    <p class="point">浏览：{{item.viewCount}}</p>
+                  </div>
+                </a>
+              </div>
+              <div v-else>
+                <i>{{ index+1 }}</i>
+                <a class="detail little" target="_blank" :href="'/detail/' + item.id">
+                  <div class="text">
+                    <p class="title">{{item.title}}</p>
+                  </div>
+                </a>
+              </div>
             </li>
           </ul>
         </div>

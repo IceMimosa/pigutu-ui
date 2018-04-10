@@ -37,12 +37,12 @@ export default {
   },
   methods: {
     handleIconClick: function () {
-      this.$router.push({ path: '/search?pageNo=1&key=' + this.keyword })
+      location.href = '/search?pageNo=1&key=' + this.keyword
     },
     onKeyDown: function (e) {
       const keycode = window.event ? e.keyCode : e.which
       if (keycode === 13) {
-        this.$router.push({ path: '/search?pageNo=1&key=' + this.keyword })
+        location.href = '/search?pageNo=1&key=' + this.keyword
       }
     }
   }

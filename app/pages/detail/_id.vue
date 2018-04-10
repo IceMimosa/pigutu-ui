@@ -32,13 +32,15 @@
             <i class="el-icon-arrow-right" />
           </button>
           <div class="rec-img clearfix">
-            <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend" @click="goImageSet(recommend.id)">
-              <app-image
-                :lazy="true"
-                :width="200"
-                :height="280"
-                :src="`http://img.pigutu.com/img/${recommend.coverUrl}/recommend`"
-              />
+            <div class="img-detail" v-for="recommend in detailData.recommends" :key="recommend">
+              <router-link target="_blank" :to="'/detail/' + recommend.id">
+                <app-image
+                  :lazy="true"
+                  :width="200"
+                  :height="280"
+                  :src="`http://img.pigutu.com/img/${recommend.coverUrl}/recommend`"
+                />
+              </router-link>
               <p>{{recommend.title}}</p>
             </div>
           </div>
@@ -47,12 +49,14 @@
       <div class="content-right">
         <p class="title">最新点赞</p>
         <div class="content">
-          <div class="detail clearfix" v-for="like in detailData.likes" :key="like" @click="goImageSet(like.allImagesId)">
-            <app-image
-              :width="120"
-              :height="100"
-              :src="`http://img.pigutu.com/img/`+like.coverUrl+'/like'"
-            />
+          <div class="detail clearfix" v-for="like in detailData.likes" :key="like">
+            <router-link target="_blank" :to="'/detail/' + like.allImagesId">
+              <app-image
+                :width="120"
+                :height="100"
+                :src="`http://img.pigutu.com/img/`+like.coverUrl+'/like'"
+              />
+            </router-link>
             <p class="title">{{like.title}}</p>
           </div>
         </div>
@@ -85,7 +89,7 @@ export default {
       this.$router.push({ path: '/detail/' + id })
     },
     labelClick: function (label) {
-      this.$router.push({ path: '/search?pageNo=1&key=' + label })
+      location.href = '/search?pageNo=1&key=' + label
     },
     changeRecommend: function () {
       this.$store.dispatch('detail/randomRecommend')

@@ -12,7 +12,9 @@
       <ul class="list clearfix">
         <li v-for="(imageList,index) in updateImg.data" :key="imageList" >
           <el-card :body-style="{ padding: '0px', width: '200px' }">
-            <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image" @click="goImageSet(imageList.id)">
+            <router-link target="_blank" :to="'/detail/' + imageList.id">
+              <img :src="'http://img.pigutu.com/img/'+imageList.coverUrl+'/thumb'" class="image">
+            </router-link>
             <div style="padding: 14px;">
               <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{imageList.title}}</p>
               <div class="bottom clearfix">
@@ -60,7 +62,7 @@ export default {
       this.$router.push({ path: '/detail/' + id })
     },
     handleCurrentChange: function (pageNo) {
-      this.$router.push({ path: `/update?pageNo=${pageNo}` })
+      location.href = `/update?pageNo=${pageNo}`
     },
     addLikeCount: function (index) {
       const id = this.updateImg.data[index].id

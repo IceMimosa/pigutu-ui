@@ -3,7 +3,7 @@
     <div>
       <h1 class="error-code">{{ error.statusCode }}</h1>
       <div class="error-wrapper-message">
-        <h2 class="error-message">{{ error.message }}</h2>
+        <h2 class="error-message">该图片已被删除</h2>
       </div>
       <p v-if="error.statusCode === 404"><nuxt-link class="error-link" to="/">返回首页</nuxt-link></p>
     </div>
@@ -52,7 +52,7 @@ export default {
   vertical-align: middle;
 }
 .error-message {
-  font-size: 14px;
+  font-size: 28px;
   font-weight: normal;
   margin: 0px;
   padding: 0px;

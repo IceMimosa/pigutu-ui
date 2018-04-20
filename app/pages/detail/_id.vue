@@ -47,19 +47,29 @@
         </div>
       </div>
       <div class="content-right">
-        <p class="title">最新点赞</p>
-        <div class="content">
-          <div class="detail clearfix" v-for="like in detailData.likes" :key="like">
-            <router-link target="_blank" :to="'/detail/' + like.allImagesId">
-              <app-image
-                :width="120"
-                :height="100"
-                :src="`http://img.pigutu.com/img/`+like.coverUrl+'/like'"
-              />
-            </router-link>
-            <p class="title">{{like.title}}</p>
+          <div class="content-comment">
+            <p class="title">评论</p>
+            <div class="comment">
+              <div v-for="comment in comments" :key="comment">
+                {{ comment.fromUser + ':' +comment.content }}
+              </div>
+            </div>
           </div>
-        </div>
+          <div class="content-like">
+            <p class="title">最新点赞</p>
+            <div class="content">
+              <div class="detail clearfix" v-for="like in detailData.likes" :key="like">
+                <router-link target="_blank" :to="'/detail/' + like.allImagesId">
+                  <app-image
+                    :width="120"
+                    :height="100"
+                    :src="`http://img.pigutu.com/img/`+like.coverUrl+'/like'"
+                  />
+                </router-link>
+                <p class="title">{{like.title}}</p>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -264,37 +274,50 @@ $MAIN_COLOR: #6cf;
     }
 
     .content-right {
-      width: 280px;
-      height: auto;
       float: left;
       margin-left: 20px;
-      background-color: #fff;
-      border: 1px solid #e2e9ec;
-      box-shadow: 0 2px 6px 0 rgba(36, 33, 46, 0.08);
-      border-radius: 10px;
-
-      .title {
-        font-weight: bold;
-        text-align: left;
-        margin: 20px 0 20px 15px;
+      width: 280px;
+      height: auto;
+        .content-comment{
+          background-color: #fff;
+          border: 1px solid #e2e9ec;
+          box-shadow: 0 2px 6px 0 rgba(36, 33, 46, 0.08);
+          border-radius: 10px;
+          .comment {
+            height: 40px;
+            text-align: left;
+            margin: 20px 0 20px 15px;
+          }
       }
-
-      .content {
-        width: 260px;
-        .detail {
-          margin-left: 20px;
-          margin-bottom: 14px;
-          .app-image {
-            float: left;
-          }
-          p {
-            float: left;
-            margin: 0 0 0 10px;
-            font-size: 12px;
-            color: #666;
-            width: 100px;
-          }
+      .content-like{
+        margin-top: 20px;
+        background-color: #fff;
+        border: 1px solid #e2e9ec;
+        box-shadow: 0 2px 6px 0 rgba(36, 33, 46, 0.08);
+        border-radius: 10px;
+        .title {
+          font-weight: bold;
+          text-align: left;
+          margin: 20px 0 20px 15px;
         }
+
+        .content {
+          width: 260px;
+          .detail {
+            margin-left: 20px;
+            margin-bottom: 14px;
+            .app-image {
+              float: left;
+            }
+            p {
+              float: left;
+              margin: 0 0 0 10px;
+              font-size: 12px;
+              color: #666;
+              width: 100px;
+            }
+        }
+      }
       }
     }
   }

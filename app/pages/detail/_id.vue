@@ -50,10 +50,17 @@
           <div class="content-comment">
             <p class="title">评论</p>
             <div class="comment">
-              <div v-for="comment in comments" :key="comment">
+              <div v-for="comment in detailData.comments" :key="comment">
                 {{ comment.fromUser + ':' +comment.content }}
               </div>
             </div>
+            <el-input
+              type="textarea"
+              :rows="2"
+              placeholder="请输入内容"
+              v-model="commentContent">
+            </el-input>
+            <el-button type="primary" v-on:click="comment">评论</el-button>
           </div>
           <div class="content-like">
             <p class="title">最新点赞</p>
@@ -106,11 +113,18 @@ export default {
     },
     addLikeCount: function (id) {
       this.$store.dispatch('detail/addLikeCount', {id: id})
+    },
+    comment: function () {
+      const commentContent = this.commentContent
+      console.log('123' + commentContent)
+      const imageId = 100
+      this.$store.dispatch('detail/addComment', { imageId: imageId, commentContent: commentContent })
     }
   },
   data () {
     return {
-      title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏'
+      title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏',
+      commentContent: ''
     }
   },
   head () {

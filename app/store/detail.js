@@ -29,5 +29,13 @@ export const actions = {
   async addLikeCount ({ commit }, { id }) {
     const likeCount = await this.$axios.$get(`/api/like?id=${id}`)
     commit('addLikeCount', likeCount)
+  },
+  async addComment ({ commit }, { imageId, commentContent }) {
+    let params = new URLSearchParams()
+    params.append('fromUser', '游客')
+    params.append('imageId', 100)
+    params.append('content', commentContent)
+    const likeCount = await this.$axios.$post(`/api/postComment`, params)
+    commit('addLikeCount', likeCount)
   }
 }

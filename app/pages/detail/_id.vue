@@ -50,17 +50,18 @@
           <div class="content-comment">
             <p class="title">评论</p>
             <div class="comment">
-              <div v-for="comment in detailData.comments" :key="comment">
+              <div class="comment-item" v-for="comment in detailData.comments" :key="comment">
                 {{ comment.fromUser + ':' +comment.content }}
               </div>
             </div>
             <el-input
+              class="text-input"
               type="textarea"
-              :rows="2"
+              :rows="4"
               placeholder="请输入内容"
               v-model="commentContent">
             </el-input>
-            <el-button type="primary" v-on:click="comment">评论</el-button>
+            <el-button type="primary" v-on:click="comment" class="commentBtn">评论</el-button>
           </div>
           <div class="content-like">
             <p class="title">最新点赞</p>
@@ -90,6 +91,12 @@ export default {
   components: {
     AppImage
   },
+  data () {
+    return {
+      title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏',
+      commentContent: ''
+    }
+  },
   fetch ({ store, params }) {
     const id = params.id
     return store.dispatch('detail/getDetails', {id: id})
@@ -116,15 +123,8 @@ export default {
     },
     comment: function () {
       const commentContent = this.commentContent
-      console.log('123' + commentContent)
-      const imageId = 100
-      this.$store.dispatch('detail/addComment', { imageId: imageId, commentContent: commentContent })
-    }
-  },
-  data () {
-    return {
-      title: '美女图片 - Pigutu - 明星美女写真专辑 高清性感美女图片欣赏',
-      commentContent: ''
+      this.$store.dispatch('detail/addComment', { imageId: this.id, commentContent: commentContent })
+      this.commentContent = ''
     }
   },
   head () {
@@ -292,15 +292,36 @@ $MAIN_COLOR: #6cf;
       margin-left: 20px;
       width: 280px;
       height: auto;
+        .title {
+          font-weight: bold;
+          text-align: left;
+          margin: 20px 0 20px 15px;
+        }
         .content-comment{
           background-color: #fff;
           border: 1px solid #e2e9ec;
           box-shadow: 0 2px 6px 0 rgba(36, 33, 46, 0.08);
           border-radius: 10px;
           .comment {
-            height: 40px;
+            width: auto;
+            height: auto;
             text-align: left;
             margin: 20px 0 20px 15px;
+            .comment-item {
+              width: 240px;
+              margin-top: 10px;
+            }
+          }
+          .commentBtn {
+            margin-right: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+          }
+          .text-input {
+            width: 260px;
+            margin-left:10px;
+            margin-right:10px;
           }
       }
       .content-like{

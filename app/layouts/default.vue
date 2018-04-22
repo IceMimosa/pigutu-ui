@@ -15,8 +15,13 @@ import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import AppBackTop from '~/components/common/AppBackTop.vue'
 import VueLazyload from 'vue-lazyload'
+import moment from 'moment'
 Vue.use(ElementUI)
 Vue.use(VueLazyload)
+Vue.filter('moment', function (value, formatString) {
+  formatString = formatString || 'MM-DD HH:mm:ss'
+  return moment(value).format(formatString)
+})
 
 export default {
   components: {

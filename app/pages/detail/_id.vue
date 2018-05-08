@@ -50,8 +50,13 @@
           <div class="content-comment">
             <p class="title">评论</p>
             <div class="comment">
-              <div class="comment-item" v-for="comment in detailData.comments" :key="comment">
-                {{ comment.fromUser + ':' +comment.content }}
+              <div class="comment-item" v-for="(comment,index) in detailData.comments" :key="index">
+                <p v-if="comment.fromUser == ''">游客</p>
+                <p v-else>
+                  {{ comment.fromUser}}
+                </p>
+                {{ comment.content }}
+                <p class="comment-footer">#{{ index+1}}   {{comment.time | moment}}</p>
               </div>
             </div>
             <el-input
@@ -308,12 +313,19 @@ $MAIN_COLOR: #6cf;
             text-align: left;
             margin: 20px 0 20px 15px;
             .comment-item {
+              p {
+                font-size: 14px;
+                color: #f25d8e;
+              }
+              .comment-footer {
+                font-size: 12px;
+                color: #99a2aa;
+              }
               width: 240px;
-              margin-top: 10px;
+              margin-top: 20px;
             }
           }
           .commentBtn {
-            margin-right: 10px;
             margin-top: 10px;
             margin-bottom: 10px;
             text-align: right;

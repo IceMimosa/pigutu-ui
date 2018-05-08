@@ -2,9 +2,9 @@
   <div id="search">
     <div class="header">
       <ul class="tabs clearfix">
-        <li><nuxt-link to="/">全部</nuxt-link></li>
+        <li><router-link to="/">全部</router-link></li>
         <li v-for="item in categoryData" v-bind:class="{active: id == item.id}" :key="item">
-          <nuxt-link :to="`/category/${item.name}`">{{ item.name }}</nuxt-link>
+          <router-link :to="`/category/${item.name}`">{{ item.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -143,7 +143,7 @@ $MAIN_COLOR: #6CF;
           border-bottom: 4px solid $MAIN_COLOR;
         }
       }
-      a.nuxt-link-exact-active {
+      a.router-link-exact-active {
         border-bottom: 4px solid $MAIN_COLOR;
       }
     }

@@ -5,7 +5,7 @@
       <div class="error-wrapper-message">
         <h2 class="error-message">该图片已被删除</h2>
       </div>
-      <p v-if="error.statusCode === 404"><nuxt-link class="error-link" to="/">返回首页</nuxt-link></p>
+      <p v-if="error.statusCode === 404"><router-link class="error-link" to="/">返回首页</router-link></p>
     </div>
   </div>
 </template>

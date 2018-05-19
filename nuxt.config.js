@@ -16,11 +16,11 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'pigutu美女图片，收集精美的美女图片，包括明星美女写真图片专辑，大学校花美女贴图，性感车模写真等各类最新最好看的性感美女图片。' }
     ],
     script: [
-      { src: 'http://img.pigutu.com/js/pigutupic.js' }
+      { src: '//img.pigutu.com/js/pigutupic.js' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'http://at.alicdn.com/t/font_429841_kq3juc9bl3c2qpvi.css' }
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_429841_kq3juc9bl3c2qpvi.css' }
     ]
   },
   /*

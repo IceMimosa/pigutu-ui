@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="images">
-            <img v-for="detail in showData" :key="detail" v-lazy="`http://img.pigutu.com/img/${detail.url}/pigutu`" alt="" />
+            <img v-for="detail in showData" :key="detail" v-lazy="`//img.pigutu.com/img/${detail.url}/pigutu`" alt="" />
           </div>
 
         </div>
@@ -38,7 +38,7 @@
                   :lazy="true"
                   :width="200"
                   :height="280"
-                  :src="`http://img.pigutu.com/img/${recommend.coverUrl}/recommend`"
+                  :src="`//img.pigutu.com/img/${recommend.coverUrl}/recommend`"
                 />
               </router-link>
               <p>{{recommend.title}}</p>
@@ -76,7 +76,7 @@
                   <app-image
                     :width="120"
                     :height="100"
-                    :src="`http://img.pigutu.com/img/`+like.coverUrl+'/like'"
+                    :src="`//img.pigutu.com/img/`+like.coverUrl+'/like'"
                   />
                 </router-link>
                 <p class="title">{{like.title}}</p>
